@@ -6,11 +6,10 @@
 %%
 %%
 %% Contributors:
-%% Feng Jiang (2005 V1.0), and Huikan Liu (2006 V2.0)
-%% Xinze Zhang (2020 V1.0)
+%% Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V1.0)
 %%
 %% Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
-%%
+%% Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
 %% This code is distributed under the Perl Artistic License
 %% ( http://language.perl.com/misc/Artistic.html )
 %% and may be freely used, distributed and modified.
@@ -18,7 +17,7 @@
 %%
 %% Current maintainer: Huikan Liu
 %%                     hkliu@mail.edu.cn
-%%
+%%                     xinze@hust.edu.cn
 %%
 %%**********************************************************************
 %
@@ -52,8 +51,18 @@
 % arial
 %    打开选项启用 arial 字体，若无字体宏包，则默认采用 helvet 字体。
 %
-%
 %*******
+% 11/2020 V1.0 changes:
+% 1. modify class file (HUSTthesis.cls):
+%   1.1 update the location of xuehao of covering page
+%   1.2 update the table length of the emajor
+%   1.3 udpate the font specification with adding and using the font locally, making it be able to compile this project on overleaf
+%   1.4 remove the font command of lishu and youyuan
+% 2. change the folder name of ./data/* to ./body/* and update the information of xinze zhang
+%
+% by Zhang Xinze (xinze@hust.edu.cn)
+% 
+% 
 % 06/2006 V2.0 changes:
 %
 % 1. wrote class file (HUSTthesis.cls) based on ThuThesis.cls written by
@@ -838,7 +847,7 @@
     \setlength{\tabcolsep}{0pt}
     \setlength{\extrarowheight}{3pt}
     \begin{HUST@tabular}{p{4em}p{5em}p{\textwidth-20em}p{2em}p{12em}}
-    \HUST@classno & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}} & \hfill &  \HUST@studentno & \makebox[0pt][l]{\rule[-2.0pt]{9em}{1pt}}{\hspace{0.5em}\HUST@xuehao} \tabularnewline
+    \HUST@classno & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}} & \hfill &  \HUST@studentno & \makebox[0pt][l]{\rule[-2.0pt]{9em}{1pt}}{\hspace{2em}\HUST@xuehao} \tabularnewline
     \HUST@UDC & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}}{\hfill\HUST@schoolcode\hfill\hfill} & \hfill & \HUST@secrettitle & \makebox[0pt][l]{\rule[-2.0pt]{9em}{1pt}} \tabularnewline
     \end{HUST@tabular}
     \end{center}
@@ -897,7 +906,7 @@
     \vspace*{2cm}
     \parbox[t][2.1cm][t]{\textwidth-4cm}{
       \xiaosan[1.2]\bfseries\centering%
-      \begin{HUST@tabular}{lrp{12em}}
+      \begin{HUST@tabular}{lrp{20em}}
         Ph.D. Candidate & : & \HUST@eauthor\\ \\
         Major & : & \HUST@esubject\\ \\
         Supervisor & : & \HUST@esupervisor

@@ -9,7 +9,7 @@
 \usepackage{HUSTtils}
 % \setmainfont{Times New Roman}[Scale=.9]
 \setmainfont{Times New Roman}
-%\includeonly{data/chap02}
+%\includeonly{body/chap02}
 
 \begin{document}
 
@@ -19,25 +19,25 @@
 % 生成封面，版权页，摘要
 
 \frontmatter
-\input{data/cover}
+\input{body/cover}
 \makecover
 
 %目录
 \tableofcontents
 
 % 对照表
-\include{data/denotation}
+\include{body/denotation}
 
 \mainmatter
-\include{data/chap01}
-\include{data/chap02}
+\include{body/chap01}
+\include{body/chap02}
 
 
 %%% 结论
-\include{data/conclusion}
+\include{body/conclusion}
 
 %%% 致谢
-\include{data/ack}
+\include{body/ack}
 
 
 %%% 参考文献
@@ -50,11 +50,11 @@
 
 %%% 附录
 \begin{appendix}
-\input{data/publications}
-\input{data/patent}
-\input{data/project}
-%\input{data/appendix01}
-%\input{data/appendix02}
+\input{body/publications}
+\input{body/patent}
+\input{body/project}
+%\input{body/appendix01}
+%\input{body/appendix02}
 \end{appendix}
 
 \end{document}
