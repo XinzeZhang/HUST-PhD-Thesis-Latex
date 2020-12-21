@@ -716,9 +716,9 @@
               {\dotfill\textrm{\contentspage[(\thecontentspage)]}}
 
 \titlecontents{subsection}
-              [0.0em]
+              [3.0em]
               {}
-              {\contentslabel{2.8em}}
+              {\contentslabel{3.0em}}
               {}
               {\dotfill\textrm{\contentspage[(\thecontentspage)]}}
 
