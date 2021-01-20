@@ -1,12 +1,12 @@
 # HUST-PhD-Thesis-Latex
 
 
-HUSTThesis.cls 2020/11/16 version V1.0
+HUSTThesis.cls 2020/11/16 version V3.0
 
 This is the unofficial LaTeX class for Master Thesis Template of Huazhong University of Science and Technology
 
 
-Contributors: Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V1.0)
+Contributors: Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V3.0)
 
 Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
 
@@ -46,14 +46,14 @@ arial
 
 
 *******
-11/2020 V1.0 changes:
+11/2020 V3.0 changes:
 1. modify class file (HUSTthesis.cls):
 
-    1.1 update the location of xuehao of covering page
+    1.1 update the location of 学号(xuehao) of covering page
 
     1.2 update the table length of the emajor
 
-    1.3 udpate the font specification with adding and using the font locally, making it be able to compile this project on overleaf
+    1.3 udpate the font specification with using the font locally, enabling this project be compiled on overleaf
 
     1.4 remove the font command of lishu and youyuan
 
