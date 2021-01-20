@@ -6,11 +6,11 @@ HUSTThesis.cls 2020/11/16 version V3.0
 This is the unofficial LaTeX class for Master Thesis Template of Huazhong University of Science and Technology
 
 
-Contributors: Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V3.0)
-
-Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
+Contributors: Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0). 
 
 Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
+
+Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
 
 This code is distributed under the Perl Artistic License
 ( http://language.perl.com/misc/Artistic.html )
