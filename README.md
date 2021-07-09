@@ -53,7 +53,7 @@ arial
 
     1.2 update the table length of the emajor
 
-    1.3 udpate the font specification with using the font locally, enabling this project be compiled on overleaf
+    1.3 update the font specification with using the font locally, enabling this project be compiled on overleaf
 
     1.4 remove the font command of lishu and youyuan
 
