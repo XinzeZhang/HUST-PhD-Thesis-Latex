@@ -1,12 +1,12 @@
 # HUST-PhD-Thesis-Latex
 
 
-HUSTThesis.cls 2020/11/16 version V3.0
+HUSTThesis.cls 2021/09/16 version V3.1
 
-This is the unofficial LaTeX class for Master Thesis Template of Huazhong University of Science and Technology
+This is the unofficial LaTeX class for Master/Ph.D. Thesis Template of Huazhong University of Science and Technology
 
 
-Contributors: Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0). 
+Contributors: Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0). 
 
 Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
 
@@ -18,32 +18,44 @@ and may be freely used, distributed and modified.
 Retain the contribution notices and credits.
 
 Current maintainer: 
-xinze@hust.edu.cn
-
+lianghao1993@hust.edu.cn
+linjqcn@gmail.com
 
 **********************************************************************
 
 Available class options
-(e.g., \documentclass[draftformat,dvips]{HUSTThesis}
+(e.g., \documentclass[draftformat,mathCMR]{HUSTthesis}
 
             *** choose only one from each category ***
 
 draftformat, finalformat
 
-    提交草稿打开 draftformat 选项，提交最终版打开 finalformat 选项。
+    提交草稿打开 draftformat 选项，提交盲审版打开 finalformat 选项。
     草稿正文页包括页眉（“华中科技大学博士学位论文”），页眉修饰线（双线）。
     页脚（页码），页脚修饰线（单线）。
-    最终版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包含页脚。
+    盲审版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包含页脚。
 
+mathtimes, mathCMR
+    公式字体选项，mathtimes 选项让公式启用 Times Roman 字体，
+    mathCMR 选项让公式启用 CM Roman 字体。
+    目前学校尚未规定公式选用什么字体，推荐使用 CM Roman 字体，
+    因为 Times Roman 数学字体不支持黑体。
+    如果使用 Times Roman 字体，需加载 bm 宏包用于支持黑体（不推荐）。
 
-dvips, dvipdfm
+*******
+09/2021 V3.1 changes:
 
-    打开 dvips 支持，否则编译方式为 dvipdfm(x)，如果运行 pdflatex，
-    则需要把这两个选项同时关闭。
+modify class file (HUSTthesis.cls):
 
-arial
-    打开选项启用 arial 字体，若无字体宏包，则默认采用 helvet 字体。
+    1. update the defence committee page between Chinese and English cover
 
+    2. update the indentation and spacing of the itemize, enumerate and description
+
+    3. update the reference list according to the latest standard
+
+    4. update the appendixs according to the latest standard
+
+ by Li Lianghao (lianghao1993@hust.edu.cn)
 
 *******
 11/2020 V3.0 changes:

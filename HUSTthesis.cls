@@ -1,24 +1,27 @@
 %%
-%% HUSTThesis.cls 2006/04/06 version V2.0
+%% HUSTThesis.cls 2022/03/28 version V3.2
 %%
 %% This is the unofficial LaTeX class for Master Thesis Template of
 %% Huazhong University of Science and Technology
 %%
 %%
 %% Contributors:
-%% Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V1.0)
+%% Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V3.0),
+%% Lianghao Li & Jianqing Lin (2021 V3.1)
 %%
 %% Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
 %% Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
+%% Copyright (C) 2021-2022 by Lianghao Li <lianghao93@vip.qq.com>
+%                           & JianQing Lin <linjqcn@gmail.com>
 %% This code is distributed under the Perl Artistic License
 %% ( http://language.perl.com/misc/Artistic.html )
 %% and may be freely used, distributed and modified.
 %% Retain the contribution notices and credits.
 %%
-%% Current maintainer: Huikan Liu
-%%                     hkliu@mail.edu.cn
-%%                     xinze@hust.edu.cn
+%% Current maintainer: lianghao93@vip.qq.com
+%%                     linjqcn@gmail.com
 %%
+%%           QQ Group：782574845
 %%**********************************************************************
 %
 % Available class options
@@ -34,12 +37,6 @@
 %    最终版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包含页脚。
 %
 %
-% dvips, dvipdfm
-%
-%    打开 dvips 支持，否则编译方式为 dvipdfm(x)，如果运行 pdflatex，
-%    则需要把这两个选项同时关闭。
-%
-%
 % mathtimes, mathCMR
 %    公式字体选项，mathtimes 选项让公式启用 Times Roman 字体，
 %    mathCMR 选项让公式启用 CM Roman 字体。
@@ -52,6 +49,20 @@
 %    打开选项启用 arial 字体，若无字体宏包，则默认采用 helvet 字体。
 %
 %*******
+% 03/2022 V3.1 changes:
+%    modify class file (HUSTthesis.cls):
+%    1. Update the defence committee page between Chinese and English cover
+%    2. Update the indentation and spacing of the itemize, enumerate and description
+%    3. Update the reference list according to the latest standard
+%    4. Update the appendixs according to the latest standard
+%    5. Change the line spacing to match the Word template
+%    6. Added bold fonts to some fonts (Heiti & Kaiti)
+%    7. Changed the font, font size, line spacing and indentation of the table of contents page to match the Word template
+%    8. Updated header and footer
+%
+% by Li Lianghao (lianghao93@vip.qq.com)
+%  & Lin Jianqing (linjqcn@gmail.com)
+%
 % 11/2020 V1.0 changes:
 % 1. modify class file (HUSTthesis.cls):
 %   1.1 update the location of xuehao of covering page
@@ -61,8 +72,8 @@
 % 2. change the folder name of ./data/* to ./body/* and update the information of xinze zhang
 %
 % by Zhang Xinze (xinze@hust.edu.cn)
-% 
-% 
+%
+%
 % 06/2006 V2.0 changes:
 %
 % 1. wrote class file (HUSTthesis.cls) based on ThuThesis.cls written by
@@ -87,7 +98,7 @@
 %% \paragraph{致谢声明}
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{HUSTthesis}
-[2006/04/06 2.0 Huazhong University of Science and Technology Thesis Template]
+[2022/03/26 3.2 Huazhong University of Science and Technology Thesis Template]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,7 +171,7 @@
 
 % 首行缩进宏包
 \RequirePackage{indentfirst}
-
+\setlength{\parindent}{2em}
 % 中文支持和中文数字支持
 % \RequirePackage{xeCJK,CJKnumb}
 \RequirePackage[SlantFont]{xeCJK}
@@ -176,17 +187,18 @@
 % \setCJKfamilyfont{hei}{SimHei}
 % \setCJKfamilyfont{kai}{KaiTi}
 % \setCJKfamilyfont{fs}{FangSong}
-% \setCJKfamilyfont{li}{LiSu}
-% \setCJKfamilyfont{you}{YouYuan}
 
+%改动1
 \setCJKmainfont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimSun.ttf}
-\setCJKsansfont[Path=font/]{SimHei.ttf}
-\setCJKmonofont[Path=font/]{simfang.ttf}
+\setCJKsansfont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimHei.ttf}
+\setCJKmonofont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{simfang.ttf}
+\setCJKmonofont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{STZhongsong.ttf}
 
+\setCJKfamilyfont{zhongsong}[Path=font/,AutoFakeBold = {2.25}]{STZhongsong.ttf}
 \setCJKfamilyfont{song}[Path=font/,AutoFakeBold = {2.25}]{SimSun.ttf}
-\setCJKfamilyfont{hei}[Path=font/]{SimHei.ttf}
-\setCJKfamilyfont{kai}[Path=font/]{simkai.ttf}
-\setCJKfamilyfont{fs}[Path=font/]{simfang.ttf}
+\setCJKfamilyfont{hei}[Path=font/,AutoFakeBold = {2.25}]{SimHei.ttf}
+\setCJKfamilyfont{kai}[Path=font/,AutoFakeBold = {2.25}]{simkai.ttf}
+\setCJKfamilyfont{fs}[Path=font/,AutoFakeBold = {2.25}]{simfang.ttf}
 
 
 % 加强定理环境的宏包
@@ -200,7 +212,6 @@
 
 % 控制目录风格的宏包
 \RequirePackage{titletoc}
-
 % 支持引用缩写的宏包
 \RequirePackage[numbers,super,sort&compress]{natbib}
 
@@ -231,7 +242,6 @@
   anchorcolor=black,
   filecolor=black,
   menucolor=black,
-  pagecolor=black,
   urlcolor=black,
   plainpages=false,
   pdfstartview=FitH}
@@ -273,7 +283,7 @@
 % 设置公式的编号形式，形式为 (式1.1)，\tagform@ 参考 amsmath 中的命令
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 \let\reftagform@\tagform@
-\def\tagform@#1{\maketag@@@{(式\hspace{0.2em}\ignorespaces#1\unskip\@@italiccorr)}}
+\def\tagform@#1{\maketag@@@{(\hspace{0.1em}\ignorespaces#1\unskip\@@italiccorr)}}
 \renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
 
 % 设置子公式的编号形式，形式为(式1.1a)/(式1.1b)
@@ -334,6 +344,8 @@
   % 图表标题字体比正文小半号，为大五号，11pt
   \dawu
   \rmfamily
+  \song
+  %\setstretch{.9} %在图表标题长度超过一行时，调整行间距使之与正文行间距一致
   \vskip\abovecaptionskip
   % 去掉图表号后面的":"
   \setbox\@tempboxa\hbox{#1~~#2}%
@@ -359,10 +371,11 @@
 
 % 下面两条命令可以使标题编号随着每开始新的一章而重新开始，即按章的顺序编号
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 %\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
 % 定制引用子图的标记形式
 %\renewcommand{\p@subfigure}{:}
+
 
 % 定义新命令\hlinewd 来改变水平线的粗细
 \def\hlinewd#1{%
@@ -389,13 +402,13 @@
 
 % Space between first item and preceding paragraph
 \newskip\HUSTtopsep
-\HUSTtopsep 2pt plus 1pt minus 1pt
+\HUSTtopsep 0pt
 
 % the space between the end of the label box
 % and the text of the first item.
 % Its default value is 0.5em.
 \newdimen\HUSTnormlabelsep
-\HUSTnormlabelsep 0.5em
+\HUSTnormlabelsep 0.3em
 
 % new dimension the list labels are indented to the right.
 % Normally, this is the same as the paragraph indention
@@ -427,12 +440,12 @@
 % Three level or greater nestings are very rare. I am guessing
 % that they don't use any indentation.
 % excerpted from IEEEtrantools.sty
-\def\HUSTlabelindentfactori{1.2}   %
-\def\HUSTlabelindentfactorii{0.75} % 0.0 or 1.0 may be used in some cases
-\def\HUSTlabelindentfactoriii{0.0} % 0.75? 0.5? 0.0?
-\def\HUSTlabelindentfactoriv{0.0}
-\def\HUSTlabelindentfactorv{0.0}
-\def\HUSTlabelindentfactorvi{0.0}
+\def\HUSTlabelindentfactori{0.8}   %
+\def\HUSTlabelindentfactorii{-0.3} % 0.0 or 1.0 may be used in some cases
+\def\HUSTlabelindentfactoriii{-0.3} % 0.75? 0.5? 0.0?
+\def\HUSTlabelindentfactoriv{-0.3}
+\def\HUSTlabelindentfactorv{-0.3}
+\def\HUSTlabelindentfactorvi{-0.3}
 
 % factor value actually used within lists, it is auto
 % set to one of the 6 values above
@@ -475,7 +488,7 @@
                 \fi\fi}
 
 % commands generating enumerate labels
-\def\labelenumi{\theenumi.}\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi)}\def\theenumi{\arabic{enumi}}
 \def\labelenumii{(\theenumii)}\def\theenumii{\arabic{enumii}}
 \def\labelenumiii{\theenumiii.}\def\theenumiii{\alph{enumiii}}
 \def\labelenumiv{(\theenumiv)}\def\theenumiv{\alph{enumiv}}
@@ -540,8 +553,8 @@
 \let\kaishu\kai
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体
 \let\heiti\hei
-% \newcommand{\li}{\CJKfamily{li}}        % 隶书
-% \let\lishu\li
+\newcommand{\zhongsong}{\CJKfamily{zhongsong}}        % 华文中宋
+\let\STzhongsong\zhongsong
 % \newcommand{\you}{\CJKfamily{you}}      % 幼圆
 % \let\youyuan\you
 
@@ -579,8 +592,9 @@
 \thu@define@fontsize{qihao}{5.5pt}
 \thu@define@fontsize{bahao}{5pt}
 %% 正文小四号（12pt）字，行距为固定值18 pt，18/12=1.5倍行距
-\renewcommand\normalsize{\fontsize{12pt}{18pt}\selectfont}
-
+%\renewcommand\normalsize{\fontsize{12pt}{18pt}\selectfont}
+\renewcommand\normalsize{\fontsize{12pt}{22pt}\selectfont}
+%改动2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 用于中文段落缩进和正文版式
@@ -683,37 +697,39 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 应用 titletoc 宏包定义标题的目录项格式
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%改动3
 % 目录涉及 2 层，即: x.x
 % chapter(0), section(1), subsection(2), subsubsection(3)
 \setcounter{tocdepth}{1}
 
 %适当增加目录项的右边距
 \contentsmargin{2.0em}
-
 % 分别正文一级标题的两种目录项格式
-\newcommand{\enabledottedtoc}{%仅显示标题，不显示指引线和页码
+\newcommand{\enabledottedtoc}{%显示标题、指引线和页码
   \titlecontents{chapter}
               [0.0em]
-              {\bfseries\song\addvspace{6bp minus6bp}}
+              {\vspace{0.3em}\bfseries\hei\sihao\addvspace{6bp minus6bp}}
               {\thecontentslabel\hspace{1em}}
               {}
-              {\normalfont\dotfill\textrm{\contentspage[(\thecontentspage)]}}}
-\newcommand{\disabledottedtoc}{%显示标题、指引线和页码
+              {\normalfont\dotfill\textrm{\contentspage[(\thecontentspage)]}}
+              }
+\newcommand{\disabledottedtoc}{%仅显示标题，不显示指引线和页码
   \titlecontents{chapter}
-              [1.5em]
-              {\bf\song\addvspace{6bp minus6bp}}
-              {\contentslabel{1.5em}}
+              [2.1em]
+              {\vspace{0.3em}\bfseries\hei\sihao\addvspace{6bp minus6bp}}
+              {\contentslabel{1.76em}}
               {}
-              {}}
+              {}
+              }
 
 % 定义其它各级子标题的目录项格式
 \titlecontents{section}
-              [2.0em]
+              [3.24em]
+              {\vspace{0.3em}\sihao\addvspace{6bp minus6bp}}
+              {\contentslabel{2.76em}}
               {}
-              {\contentslabel{2.0em}}
-              {}
-              {\dotfill\textrm{\contentspage[(\thecontentspage)]}}
+              {\dotfill\textrm{\contentspage[(\thecontentspage)]}
+              }
 
 \titlecontents{subsection}
               [3.0em]
@@ -733,7 +749,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 定义页眉页脚，参考 fancyhdr 宏包的代码
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%改动4
 \newcommand{\headrulewidth}{0.4pt}
 \newcommand{\footrulewidth}{0.4pt}
 \def\ps@plain{%
@@ -745,22 +761,22 @@
         \parbox[b]{\textwidth}{\centering\sihao%
           \ziju{0.8em} \kai \sanhao[1] \HUST@schoolename\HUST@apply}
         \vskip8pt
-        \vbox{\hrule width\textwidth height\headrulewidth depth0pt\vskip1.0pt\hrule width\textwidth}}}\fi%
+        \hspace{-4mm} \vbox{\hspace{-3mm} \hrule width 1.04\textwidth height\headrulewidth depth0pt\vskip1.0pt\hrule width 1.04\textwidth}}}\fi%
     \let\@evenhead=\@oddhead
   \ifHUST@finalformat
    \def\@oddfoot{%
      \hbox to\textwidth{%
-     \vbox{%
+      \vbox{%
       \hfill \parbox[t]{\textwidth}{\centering\wuhao\thepage\strut}\hfill
       }}}
    \else
    \def\footrule{{\vskip-0.3\normalbaselineskip\vskip-\footrulewidth
-   \hrule\@width\textwidth\@height\footrulewidth\vskip0.3\normalbaselineskip}}
+   \hrule\@width 1.04\textwidth\@height\footrulewidth\vskip0.3\normalbaselineskip}}
    \def\@oddfoot{%
-     \hbox to\textwidth{%
-     \vbox{%
+     \hbox to \textwidth{%
+     \hspace{-4mm}\vbox{%
       \footrule
-      \hfill \parbox[t]{\textwidth}{\centering\wuhao\thepage\strut}\hfill
+      \hfill \hspace{-4mm} \parbox[t]{\textwidth}{\centering\wuhao\thepage\strut}\hfill
       }}}
    \fi
   \let\@evenfoot=\@oddfoot}
@@ -810,6 +826,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\xuehao#1{\def\HUST@xuehao{#1}}\def\HUST@xuehao{}
+\def\miji#1{\def\HUST@miji{#1}}\def\HUST@miji{}
 \def\schoolcode#1{\def\HUST@schoolcode{#1}}\def\HUST@schoolcode{}
 \def\ctitle#1{\def\HUST@ctitle{#1}}\def\HUST@ctitle{}
 \def\cdegree#1{\def\HUST@cdegree{#1}}\def\HUST@cdegree{}
@@ -842,13 +859,13 @@
 \newcommand{\HUST@ctitlepage}{
     \begin{center}
     \vspace*{-3.3cm}
-    \parbox[t][2.2cm][t]{\textwidth}{\sihao
+    \parbox[t][2.2cm][t]{\textwidth}{\xiaosi \bfseries
     \begin{center}\song
     \setlength{\tabcolsep}{0pt}
     \setlength{\extrarowheight}{3pt}
-    \begin{HUST@tabular}{p{4em}p{5em}p{\textwidth-20em}p{2em}p{12em}}
-    \HUST@classno & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}} & \hfill &  \HUST@studentno & \makebox[0pt][l]{\rule[-2.0pt]{9em}{1pt}}{\hspace{2em}\HUST@xuehao} \tabularnewline
-    \HUST@UDC & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}}{\hfill\HUST@schoolcode\hfill\hfill} & \hfill & \HUST@secrettitle & \makebox[0pt][l]{\rule[-2.0pt]{9em}{1pt}} \tabularnewline
+    \begin{HUST@tabular}{p{4em}p{5em}p{\textwidth-18em}p{2em}p{12em}}
+    \HUST@classno & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}} & \hfill &  \HUST@studentno & \makebox[0pt][l]{\rule[-2.0pt]{7em}{1pt}}{\hspace{1em}\HUST@xuehao} \tabularnewline 
+    \HUST@UDC & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}}{\hfill\HUST@schoolcode\hfill\hfill} & \hfill   &   \HUST@secrettitle & \makebox[0pt][l]{\rule[-2.0pt]{7em}{1pt}}{\hspace{1em}\HUST@miji} \tabularnewline
     \end{HUST@tabular}
     \end{center}
     }
@@ -856,21 +873,24 @@
     %\renewcommand{\baselinestretch}{1.5}
     \vspace{2.0cm}
     \begin{center}
-    \includegraphics[scale=1.2]{hust-flash-eps-crop.eps}\\[1.3cm]
-    \ziju{5bp}\dachu[1]{\bf \song \HUST@apply}%\CJKfamily{fzcs}
-    \end{center}}
+    \includegraphics[scale=1.14]{figures/hust-flash-eps-crop.png}\\[1.3cm]
+    \vspace{-0.8cm}
+    \ziju{5bp}\dachu[1]{\bfseries \zhongsong \HUST@apply} \\%\CJKfamily{fzcs}
+    \vspace{-0.4cm}
+    \ziju{1bp}\bf{\xiaosan[1]{( 学术型$\mbox{\ooalign{$\checkmark$\cr\hidewidth$\square$\hidewidth\cr}}$ $\quad \quad$ 专业型$\square$ )}}
+    \end{center}}\\
     \parbox[t][4cm][t]{\paperwidth-7cm}{
     \vspace{3.0cm}
     \begin{center}
     \yihao[1.3] {\bf \song \HUST@ctitle}%\CJKfamily{fzcs}
     \end{center}}
-    \parbox[t][7.4cm][t]{\textwidth}{\vspace{5cm}\xiaoer[1.5]
+    \parbox[t][7.4cm][t]{\textwidth}{\vspace{5cm}\xiaosan[1.5] \bf
     \begin{center}\song
     \setlength{\extrarowheight}{2.5pt}
     \begin{HUST@tabular}{p{5em}ll}
-    \HUST@cauthor & \HUST@title@sep & {\HUST@cauthorname}\\
-    \HUST@csubject & \HUST@title@sep & {\HUST@csubjectname}\\
-    \HUST@csupervisor & \HUST@title@sep & {\HUST@csupervisorname\hspace{1em}\HUST@csupervisortitle}\\
+    \HUST@cauthor & \HUST@title@sep & {\HUST@cauthorname} \vspace{0.4em}\\
+    \HUST@csubject & \HUST@title@sep & {\HUST@csubjectname} \vspace{0.4em}\\
+    \HUST@csupervisor & \HUST@title@sep & {\HUST@csupervisorname\hspace{1em}\HUST@csupervisortitle} \vspace{0.4em}\\
     \HUST@cdefencedate & \HUST@title@sep & {\ziju{3bp}\HUST@defencedate}
     \end{HUST@tabular}
     \end{center}}
@@ -885,19 +905,46 @@
     \end{center}}}
     \fi
     \end{center}}
-
+% 答辩委员会
+\newcommand{\HUST@defencecommittee}{
+\begin{center}\song\sanhao
+\textbf{答辩委员会}\\
+\vspace{2.0cm} \sihao
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{|p{0.9cm}|p{1.8cm}|p{1.8cm}|p{5.4cm}|}
+    \hline
+    &\makecell{\textbf{姓名}}&\makecell[c]{\textbf{职称}}&\makecell[c]{\textbf{单位}}\\
+    \hline
+    主席&&&\\
+    \hline
+    \multirow{6}{*}{委员}&&&\\
+    \cline{2-4}
+    &&&\\
+    \cline{2-4}
+    &&&\\
+    \cline{2-4}
+    &&&\\
+    \cline{2-4}
+    &&&\\
+    \cline{2-4}
+    &&&\\
+    \hline
+\end{tabular}
+\end{center}
+}
 % 英文封面
 \newcommand{\HUST@etitlepage}{%
     \begin{center}
-    \vspace*{-2cm}
+    \vspace*{-1.2cm}
     \parbox[t][5.2cm][t]{\textwidth}{
       \renewcommand{\baselinestretch}{1.5}
       \begin{center}
-        \sihao[1.1] \textbf{A Dissertation Submitted in Partial Fulfillment of the Requirements
+        \xiaosan[1.1] \textbf{A Dissertation Submitted in Partial Fulfillment of the Requirements
          for the Degree of \HUST@edegree}
       \end{center}}
 
     \parbox[t][5.5cm][t]{\textwidth}{
+    \vspace{1.8cm}
       \renewcommand{\baselinestretch}{1.3}
       \begin{center}
         \erhao \textbf{\HUST@etitle}
@@ -905,10 +952,11 @@
 
     \vspace*{2cm}
     \parbox[t][2.1cm][t]{\textwidth-4cm}{
+    \vspace{1cm}
       \xiaosan[1.2]\bfseries\centering%
       \begin{HUST@tabular}{lrp{20em}}
-        Ph.D. Candidate & : & \HUST@eauthor\\ \\
-        Major & : & \HUST@esubject\\ \\
+        Ph.D. Candidate & : & \HUST@eauthor\\  \vspace{-0.3pt}\\
+        Major & : & \HUST@esubject\\ \vspace{-0.3pt}\\
         Supervisor & : & \HUST@esupervisor
       \end{HUST@tabular}
       }
@@ -916,7 +964,7 @@
 
     \parbox[t][6cm][b]{\paperwidth-7.2cm}{
     \begin{center}
-    \sihao[2.0] {\bf{Huazhong University of Science \& Technology\\
+    \sihao[2.0] {\bf{Huazhong University of Science and Technology\\
     Wuhan~430074, P.~R.~China\\
     \HUST@edate}}
     \end{center}}
@@ -924,44 +972,46 @@
 
 % 版权页
 \newcommand{\HUST@authorization@mk}{%
-    \vspace*{-2.5cm}
+    %\vspace*{1cm}
 
     \begin{center}
-    \parbox[t]{\textwidth}{{\sanhao \hei \centerline{\HUST@declare}}}
+    \parbox[t]{\textwidth}{\sanhao \hei \centerline{\HUST@declare}}
 
     \vspace{1cm}
     \parbox[t]{\textwidth}{\xiaosi[2]\HUST@declaretext}
 
-    \vspace{1.9cm}
+    \vspace{1cm}
     \parbox[t]{\textwidth}{\xiaosi[1.5]
     \hfill \begin{HUST@tabular}{ll}
-        \HUST@authorsig & \hspace{2em}\\
-        \HUST@frontdate & \hspace{2em}\\
-    \end{HUST@tabular}}
+        \HUST@authorsig & \hspace{-2em} \vspace{0.5cm}\\
+        \HUST@frontdate & \hspace{-2em} \\
+    \end{HUST@tabular}}\\
+    \vspace{2cm}    
     \begin{center}
-    \parbox[t][3cm][c]{\textwidth}{{\sanhao \hei \centerline{\HUST@authtitle}}}
+    \parbox[t][3cm][c]{\textwidth}{\sanhao \hei \centerline{ \HUST@authtitle}}
     \parbox[t][3cm][c]{\textwidth}{\xiaosi[2]\HUST@authorization}\\
-    \vspace{30bp}
-    \hspace*{2em}\parbox[t][2cm][c]{\textwidth}{\xiaosi[2]\HUST@authorizationaddon}
-    \hspace*{2em}\parbox[t][2cm][c]{\textwidth}{\xiaosi[2]\HUST@authorizationcheck}
+    \hspace*{2em}\parbox[t][2cm][c]{\textwidth}{\xiaosi[2]\HUST@authorizationaddon}\\ \vspace{-1em}
+    \hspace*{2em}\parbox[t][2cm][c]{\textwidth}{\xiaosi[2]\HUST@authorizationcheck}\\
+    \vspace{-2cm}
     \hspace*{2em}\parbox[t][3cm][b]{\textwidth-2em}{\xiaosi[1.5]
     \begin{HUST@tabular}{ll}
-        \HUST@authorsig & \hspace{2em}\\
-        \HUST@frontdate & \hspace{2em}\\
+        \hspace{-1.5em} \HUST@authorsig & \hspace{-2em}         \vspace{0.5cm}\\
+        \hspace{-1.5em} \HUST@frontdate & \hspace{-2em} \\
     \end{HUST@tabular}
     \hfill
     \begin{HUST@tabular}{ll}
-        \HUST@teachersig & \hspace{2em}\\
-        \HUST@frontdate & \hspace{2em}\\
+        \HUST@teachersig & \hspace{-2.4em}         \vspace{0.5cm}\\
+        \HUST@frontdate & \hspace{-2.4em} \\
     \end{HUST@tabular}}
     \end{center}
     \end{center}}
 
-% 定义 \makecover
+% 定义封面 \makecover
 \newcommand{\makecover}{
     \pagenumbering{Roman}
     \begin{titlepage}
     \HUST@ctitlepage
+    \clearpage\thispagestyle{empty}\HUST@defencecommittee
     \clearpage\thispagestyle{empty}\HUST@etitlepage
     \end{titlepage}
     \clearpage\thispagestyle{empty}\HUST@authorization@mk
@@ -975,7 +1025,7 @@
 
 % 定义中英文摘要
 \newcommand{\HUST@makeabstract}{%
-
+%改动5
     % 定义中文摘要
     \clearpage
     \setcounter{page}{1}
@@ -983,39 +1033,46 @@
     \titlecontents{chapter}%重定义摘要的目录项格式
                            %有指引线，有页码，页码无括号
            [0.0em]
-           {\bfseries\addvspace{6bp minus6bp}}
+           {\bfseries\hei\addvspace{6bp minus6bp}}
            {\thecontentslabel\hspace{1em}}
            {}
            {\normalfont\dotfill\textrm{\bfseries\contentspage}}
-    \addcontentsline{toc}{chapter}{摘~~~~要}
-    \chapter*{\abstractname}
+    \addcontentsline{toc}{chapter}{\sihao 摘~~~~要}
+    \chapter*{\bfseries\hei\abstractname}
     \markboth{\abstractshortname}{\abstractshortname}
     \HUST@cabstract
     \\[1em]
-    \noindent\begin{HUST@tabular}{@{}p{4em}@{}p{\textwidth-4em}}
-    {\hei\HUST@keywords} & \HUST@ckeywords \\
+    \noindent\begin{HUST@tabular}{@{}p{4em}@{}p{\textwidth-4em}} \\
+    {\hei\HUST@keywords} & \HUST@ckeywords \\ 
     \end{HUST@tabular}
 
     % 定义英文摘要
     \clearpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{Abstract}
+    \addcontentsline{toc}{chapter}{\sihao Abstract}
     \normalsize
     \chapter*{{\bfseries Abstract}}
     \markboth{Abstract}{Abstract}
     \HUST@eabstract
     \\[1em]
     \noindent\begin{HUST@tabular}{@{}p{5em}@{}p{\textwidth-5em}}
-    {\textbf{Key words:}} & \HUST@ekeywords\\
+    {\textbf{Keywords:}} & \hspace{0.4em} \HUST@ekeywords\\
     \end{HUST@tabular}
     \disabledottedtoc%
     }
 
-% 定义“符合对照表”环境，可选
+% 定义“符号对照表”环境，可选
+%改动6
 \newenvironment{denotation}{
     %\cleardoublepage
     %\phantomsection
-    %\addcontentsline{toc}{chapter}{Abstract}
+    \titlecontents{chapter}
+           [0.0em]
+           {\bfseries\hei\addvspace{6bp minus6bp}}
+           {\thecontentslabel\hspace{1em}}
+           {}
+           {\normalfont\dotfill\textrm{\bfseries\contentspage}}
+    \addcontentsline{toc}{chapter}{\sihao \HUST@denotation@name}
     \chapter*{\HUST@denotation@name}
     \markboth{\HUST@denotation@name}{\HUST@denotation@name}
     \xiaosi[1.6]
@@ -1030,20 +1087,24 @@
                 \setlength{\itemsep}{0cm} %标签间距
                 \setlength{\listparindent}{0cm} %段落缩进量
                 \setlength{\topsep}{0pt} %标签与上文的间距
-    }}
+    }
+    \disabledottedtoc}
     {\end{list}}%%%%%
 
+
 % 定义封底的“致谢”
+%改动7
 \newenvironment{ack}{
     \clearpage
     \phantomsection
     \enabledottedtoc
-    \addcontentsline{toc}{chapter}{\HUST@ackname}
+    \addcontentsline{toc}{chapter}{\sihao \HUST@ackname}
     \normalsize
     \chapter*{\HUST@ackname}}
    {}
 
 % 定义附录及其目录项格式
+%改动8
 \let\HUST@appendix\appendix
 \renewenvironment{appendix}{%
   \HUST@appendix
@@ -1064,7 +1125,7 @@
   \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@equation}
   \titlecontents{chapter}
               [0.0em]
-              {\bf\addvspace{6bp minus6bp}}
+              {\vspace{0.45em}\bfseries\hei\sihao\addvspace{6bp minus6bp}}
               {\appendixname~\thecontentslabel\hspace{1em}}
               {}
               {\normalfont\dotfill\textrm{\contentspage[(\thecontentspage)]}}
@@ -1075,27 +1136,23 @@
    \clearpage
    \phantomsection
    \chapter{\HUST@publication@title}
-   \renewcommand{\labelenumi}{[\arabic{enumi}]}
-   \begin{enumerate}
-   }{\end{enumerate}}
+   }
 
-% 定义封底的“攻读博士学位期间申请的发明专利和其他成果”
-\newenvironment{patent}{
-   \clearpage
-   \phantomsection
-   \chapter{\HUST@patent@title}
-   \renewcommand{\labelenumi}{[\arabic{enumi}]}
-   \begin{enumerate}
-   }{\end{enumerate}}
+%% 定义封底的“攻读博士学位期间申请的发明专利和其他成果”(新版本中合并至上一部分)
+%\newenvironment{patent}{
+%   \clearpage
+%   \phantomsection
+%   \chapter{\HUST@patent@title}
+%   \renewcommand{\labelenumi}{[\arabic{enumi}]}
+%   \begin{enumerate}
+%   }{\end{enumerate}}
 
 % 定义封底的“攻读博士学位期间参与的科研项目”
 \newenvironment{project}{
    \clearpage
    \phantomsection
    \chapter{\HUST@project@title}
-   \renewcommand{\labelenumi}{[\arabic{enumi}]}
-   \begin{enumerate}
-   }{\end{enumerate}}
+   }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1113,7 +1170,7 @@
      \clearpage
      \phantomsection % make sure the hyperlink is correct
      \enabledottedtoc%
-     \addcontentsline{toc}{chapter}{\bibname}%
+     \addcontentsline{toc}{chapter}{\sihao \bibname}%
      \chapter*{\bibname}%
       \markboth{\bibname}{\bibname}%
       \xiaosi[1.5]
@@ -1196,7 +1253,7 @@
 
 
 
-\renewcommand\contentsname{目\hspace{2em}录}
+\renewcommand\contentsname{\bfseries \hei 目\hspace{2em}录}
 \renewcommand\listfigurename{插图}
 \renewcommand\listtablename{表格}
 
@@ -1242,7 +1299,7 @@
   \or \ding{178}\or \ding{179}\or \ding{180}\or \ding{181}\else *\fi\relax}
 \def\HUST@title@sep{\hspace{-0.5em}：\hspace{2em}}
 \def\HUST@schoolename{华中科技大学}
-%\def\HUST@schoolename{}%盲审，删去页眉
+%\def\HUST@schoolename{} %盲审，删去页眉
 \def\HUST@classno{分\hfill 类\hfill 号}
 \def\HUST@studentno{学号}
 \def\HUST@UDC{学校代码}
@@ -1265,7 +1322,7 @@
     缩印或扫描等复制手段保存和汇编本学位论文。}
 
 \newcommand{\HUST@authorizationaddon}{%
- 本论文属于 \tabincell{l}{保密$\square$，在~\makebox[2em]{\hrulefill} 年解密后适用本授权书。\\
+ 本论文属于 \tabincell{l}{保\hspace{1em}密$\square$，在~\makebox[2em]{\hrulefill} 年解密后适用本授权书。\\
                             不保密~$\square$。} }
 \newcommand{\HUST@authorizationcheck}{%
 （请在以上方框内打“$\surd$”）}
@@ -1284,7 +1341,7 @@
 做出贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
 \newcommand{\HUST@signature}{签\hspace{1em}名：}
 \newcommand{\HUST@backdate}{日\hspace{1em}期：}
-\newcommand{\HUST@publication@title}{攻读学位期间发表论文目录}
+\newcommand{\HUST@publication@title}{攻读博士学位期间取得的研究成果}
 \newcommand{\HUST@patent@title}{攻读博士学位期间申请的发明专利和其他成果}
 \newcommand{\HUST@project@title}{攻读博士学位期间参与的科研项目}
 
