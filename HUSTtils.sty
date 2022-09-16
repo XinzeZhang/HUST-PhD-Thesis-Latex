@@ -1,5 +1,29 @@
 \ProvidesPackage{HUSTtils}[2006/03/27 2.2 any packages you would
 like to use]
+\usepackage{multirow,booktabs,soul}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb,color}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicreturn}{\textbf{Return:}}
+\renewcommand{\algorithmicendwhile}{\textbf{end}}
+\renewcommand{\algorithmicendif}{\textbf{end}}
+\renewcommand{\algorithmicendfor}{\textbf{end}}
+\usepackage{url}
+\definecolor{hl}{rgb}{0.75,0.75,0.75}
+\sethlcolor{hl}
+\usepackage{natbib}
+\usepackage{caption}
+\newcommand{\lcite}[1]{{\setcitestyle{numbers,square}\cite{#1}}}
+
+\usepackage{subfloat}
+\captionsetup[subfloat]{labelformat=simple}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
 
 
 % 不同于~|\mathcal| or |\mathfrak| 之类的英文花体字体

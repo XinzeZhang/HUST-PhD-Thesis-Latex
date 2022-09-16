@@ -194,7 +194,8 @@ FUNCTION {output.bibitem}
 }
 
 FUNCTION {fin.entry}
-{ add.period$
+{ 
+  %add.period$
   write$
   newline$
 }
@@ -282,20 +283,19 @@ FUNCTION {format.lang}
 FUNCTION {format.names}
 { 's :=
   #1 'nameptr :=
-  s num.names$ 'numnames :=
+  s num.names$ 'numnames := 
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{ll}{ f{~}}"
+      "{f.~}{ll}"
       format.name$
-      %remove.dots
       %bibinfo bibinfo.check
       't :=
       nameptr #1 >
         {
-          nameptr #3
+          nameptr #6
           #1 + =
-          numnames #3
+          numnames #6
           > and
             { "others" 't :=
               #1 'namesleft := }
@@ -391,8 +391,8 @@ FUNCTION {n.dashify}
   ""
     { t empty$ not }
     { t #1 #1 substring$ "-" =
-    { t #1 #2 substring$ "--" = not
-        { "--" *
+    { t #1 #2 substring$ "-" = not
+        { "-" *
           t #2 global.max$ substring$ 't :=
         }
         {   { t #1 #1 substring$ "-" = }
@@ -531,15 +531,15 @@ FUNCTION {format.pages}
     { "" }
     { pages multi.page.check
     {  lang empty$
-         {"pages" pages n.dashify tie.or.space.connect }
+         {":" pages n.dashify tie.or.space.connect }
          { lang "chinese" = 
-         { "" pages n.dashify tie.or.space.connect }
+         { ":" pages n.dashify tie.or.space.connect }
          'skip$
          if$
          }
        if$
     }   
-       { "page" pages tie.or.space.connect }
+       { "" pages tie.or.space.connect }
       if$
     }
   if$
@@ -552,6 +552,27 @@ FUNCTION {format.vol.num.pages}
     { "(" number * ")" * *
       volume empty$
     { "there's a number but no volume in " cite$ * warning$ }
+    'skip$
+      if$
+    }
+  if$
+  pages empty$
+    'skip$
+    { duplicate$ empty$
+    { pop$ format.pages }
+    { ":" * pages n.dashify * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.year.chapter.pages}
+{ year field.or.null
+  chapter empty$
+    'skip$
+    { "(" chapter * ")" * *
+      year empty$
+    { "there's a chapter but no year in " cite$ * warning$ }
     'skip$
       if$
     }
@@ -587,13 +608,13 @@ FUNCTION {format.in.ed.booktitle}
     { "" }
     { editor empty$
     { lang empty$
-        { "in: Proceedings of " booktitle * }
-        { "��: " booktitle * }
+        { "in: " booktitle * }
+        { "见：" booktitle * }
       if$
     }
     { lang empty$
-        { "in: " format.editors * ", Proceedings of " * booktitle * }
-        { ". ��: " * format.editors * booktitle * }
+        { "in: " format.editors * ", " * booktitle * }
+        { "见：" * format.editors * booktitle * }
       if$
     }
       if$
@@ -748,6 +769,20 @@ FUNCTION {format.address.school}
 }
 
 
+FUNCTION {format.year.pages}
+
+{ year field.or.null
+  pages empty$
+    'skip$
+    { duplicate$ empty$
+    { pop$ format.pages }
+    { ". " * pages n.dashify * }
+      if$
+    }
+  if$
+}
+
+
 FUNCTION {format.title.type}
 { title empty$
     { type empty$
@@ -779,10 +814,10 @@ FUNCTION {book} { output.bibitem
   format.btitle 
   "title" output.check
   crossref missing$
-    { format.bvolume output
+    { %format.bvolume output
       new.block
-      format.number.series output
-      new.sentence
+      %format.number.series output
+      %new.sentence
     }
     { new.block
       format.book.crossref output.nonnull
@@ -814,8 +849,70 @@ FUNCTION {article}
       format.pages output
     }
   if$
+  new.block 
+  fin.entry
+}
+
+FUNCTION {incollection}
+{ output.bibitem
+  format.authors "author" output.check
   new.block
-  format.note output  
+  format.title "title" output.check
+  new.block
+  crossref missing$
+    { format.in.ed.booktitle "booktitle" output.check
+      address output
+      publisher "publisher" output.check
+      %format.date output.check
+      %year output
+      format.year.chapter.pages output
+    }
+    { format.incoll.inproc.crossref output.nonnull
+      format.chapter.pages output
+    }
+  if$
+  new.block
+  fin.entry
+}
+
+FUNCTION {inproceedings}
+{ output.bibitem
+  format.authors "author" output.check
+  new.block
+  format.title "title" output.check
+  new.block
+  crossref missing$
+    { format.in.ed.booktitle "booktitle" output.check
+      new.block
+      %format.bvolume output
+      %format.number.series output
+      %format.pages output
+      address empty$
+    { organization publisher new.sentence.checkb
+      organization output
+      publisher output
+      %new.block
+      format.year.chapter.pages output
+      %year output
+    }
+    { %address output.nonnull
+      format.address.publisher output  
+      format.year.pages output
+      %year output
+      %new.sentence
+      %organization output
+    }
+      if$
+      %new.block
+      %pages output
+      %remove.dots
+    }
+    { format.incoll.inproc.crossref output.nonnull
+      format.pages output
+    }
+  if$
+  new.block
+  note output  
   fin.entry
 }
 
@@ -861,71 +958,6 @@ FUNCTION {inbook} { output.bibitem
   format.chapter.pages "chapter and pages" output.check
   new.block
   note output
-  fin.entry
-}
-
-FUNCTION {incollection}
-{ output.bibitem
-  format.authors "author" output.check
-  new.block
-  format.title "title" output.check
-  new.block
-  crossref missing$
-    { format.in.ed.booktitle "booktitle" output.check
-      format.bvolume output
-      format.number.series output
-      format.chapter.pages output
-      new.sentence
-      publisher "publisher" output.check
-      address output
-      %format.edition output
-      format.date "year" output.check
-    }
-    { format.incoll.inproc.crossref output.nonnull
-      format.chapter.pages output
-    }
-  if$
-  new.block
-  note output
-  fin.entry
-}
-
-FUNCTION {inproceedings}
-{ output.bibitem
-  format.authors "author" output.check
-  new.block
-  format.title "title" output.check
-  new.block
-  crossref missing$
-    { format.in.ed.booktitle "booktitle" output.check
-      %format.bvolume output
-      %format.number.series output
-      %format.pages output
-      address empty$
-    { organization publisher new.sentence.checkb
-      organization output
-      publisher output
-      format.date "year" output.check
-      %year output
-    }
-    { %address output.nonnull
-      format.address.publisher output  
-      format.date "year" output.check
-      %year output
-      %new.sentence
-      organization output
-    }
-      if$
-      %new.block
-      pages output
-      %remove.dots
-    }
-    { format.incoll.inproc.crossref output.nonnull
-      format.pages output
-    }
-  if$
-  new.block
-  note output  
   fin.entry
 }
 
