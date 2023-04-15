@@ -293,9 +293,9 @@ FUNCTION {format.names}
       't :=
       nameptr #1 >
         {
-          nameptr #6
+          nameptr #3
           #1 + =
-          numnames #6
+          numnames #3
           > and
             { "others" 't :=
               #1 'namesleft := }
