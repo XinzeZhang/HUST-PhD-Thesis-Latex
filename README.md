@@ -20,6 +20,14 @@ Retain the contribution notices and credits.
 Current maintainer: 
 lianghao1993@hust.edu.cn
 linjqcn@gmail.com
+xinze@hust.edu.cn
+
+**********************************************************************
+目前学校对于博士、硕士学位论文的撰写规定文件主要有3个：
+
+1. [华中科技大学博士、硕士学位论文撰写规定， 校研〔2009〕39号](http://gs.hust.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1022&wbnewsid=1027)。该文件规定了论文撰写的基本格式，包括题目、摘要和关键词、引言、正文、参考文献等的格式规定。
+2. [学位申请相关文档下载](http://gs.hust.edu.cn/info/1041/5462.htm)。该文档提供了学位申请的相关文档格式规范，其中包括了博士与硕士论文封面及独创性声明页的word模板。
+3. [2022研究生手册](http://gs.hust.edu.cn/info/1041/5472.htm)。该文档是研究生管理的规范性文件，p244~251页具体展示了[华中科技大学博士、硕士学位论文撰写规定， 校研〔2009〕39号](http://gs.hust.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1022&wbnewsid=1027)的详细内容。
 
 **********************************************************************
 
