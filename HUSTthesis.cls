@@ -20,6 +20,7 @@
 %%
 %% Current maintainer: lianghao93@vip.qq.com
 %%                     linjqcn@gmail.com
+%%                     xinze@hust.edu.cn
 %%
 %%           QQ Group：782574845
 %%**********************************************************************
@@ -63,13 +64,13 @@
 % by Li Lianghao (lianghao93@vip.qq.com)
 %  & Lin Jianqing (linjqcn@gmail.com)
 %
-% 11/2020 V1.0 changes:
-% 1. modify class file (HUSTthesis.cls):
-%   1.1 update the location of xuehao of covering page
-%   1.2 update the table length of the emajor
-%   1.3 udpate the font specification with adding and using the font locally, making it be able to compile this project on overleaf
-%   1.4 remove the font command of lishu and youyuan
-% 2. change the folder name of ./data/* to ./body/* and update the information of xinze zhang
+% 11/2020 V3.0 changes:
+% 1. Modify class file (HUSTthesis.cls):
+%   1.1 Update the location of xuehao of covering page
+%   1.2 Update the table length of the emajor
+%   1.3 Udpate the font specification with adding and using the font locally, making it be able to compile this project on overleaf
+%   1.4 Remove the font command of lishu and youyuan
+% 2. Change the folder name of ./data/* to ./body/* and update the information of xinze zhang
 %
 % by Zhang Xinze (xinze@hust.edu.cn)
 %
