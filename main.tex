@@ -1,18 +1,114 @@
-%%% Local Variables:
-%%% mode: Xelatex
+%% Local Variables:
+%%% mode: latex
 %%% TeX-master: t
 %%% End:
 
-\documentclass[draftformat,mathtimes]{HUSTthesis}%草稿用这个
-%\documentclass[finalformat,mathCMR]{HUSTthesis}%盲审用这个
-\raggedbottom %顶端对齐，避免LaTeX在特定情况下自动增大段间距
-
-\usepackage{HUSTtils}% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。这样做主要是为了避免class文件过于臃肿。
+% \documentclass[draftformat,mathCMR,draft]{HUSTthesis}
+\documentclass[draftformat,mathCMR]{HUSTthesis}
+% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。这样做
+% 主要是为了避免class文件过于臃肿。
+\usepackage{HUSTtils}
 % \setmainfont{Times New Roman}[Scale=.9]
 \setmainfont{Times New Roman}
-%\includeonly{body/chap02}
-\begin{document}
 
+%\includeonly{body/chap02}
+% \setcitestyle{authoryear, open={（},close={）}}
+
+\usepackage[stable]{footmisc}
+\usepackage{xcolor}
+\usepackage{soul}
+
+
+\newcommand*\red[1]{\textcolor{red}{#1}}
+% \setul{0.5ex}{0.3ex}
+\usepackage{xeCJKfntef}
+\newcommand\redline[1]{\CJKunderline[skip=false,format=\color{red}]{#1}}
+
+\usepackage{mathtools}
+% \let\proof\relax
+% \let\endproof\relax
+% \let\theoremstyle\relax
+% \let\newtheoremstyle\relax
+% \usepackage{amsthm}
+% \usepackage{amssymb}
+\usepackage{amsmath,amssymb,bm}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\trans}{{\mathrm{T}}}
+\DeclareMathOperator*{\avg}{Avg}
+\newcommand*\abs[1]{\left \lvert#1 \right \rvert}
+\newcommand*\norm[1]{\left \lVert #1 \right \rVert}
+\newcommand\x{\bm{x}}
+\newcommand\y{\bm{y}}
+\newcommand\e{\bm{e}}
+\newcommand\h{\bm{h}}
+\newcommand\w{\bm{w}}
+\newcommand\g{\bm{g}}
+\newcommand\m{\bm{m}}
+\newcommand\bs{\bm{s}}
+\newcommand\bp{\bm{p}}
+\newcommand\brho{\bm{\rho}}
+\newcommand\bv{\bm{v}}
+\newcommand\bu{\bm{u}}
+\newcommand\mathr{\mathbb{R}}
+\newcommand\mathd{\mathbb{D}}
+
+% \usepackage[e]{esvect}
+% \newcommand{\uv}[2][2mu]{\vec{#2\mkern-#1}\mkern#1}
+
+% *** SPECIALIZED LIST PACKAGES ***
+\usepackage{algorithm, algorithmic}
+% \newcommand{\algorithmautorefname}{Algorithm}
+
+\usepackage{breqn}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\rfist}{\ding{192}~}
+\newcommand{\rsecond}{\ding{193}~}
+\newcommand{\rthird}{\ding{194}~}
+
+\usepackage{marginnote}
+\usepackage{multirow,makecell}
+\usepackage{tabularx}
+% \usepackage{ltablex} %load to using long tabularx
+% \keepXColumns %solve the problem that tabularx does not fill full textwidth when using ltablex
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newcommand\ph{$\phantom{1}$} 
+\newcommand\s{$^\star$}
+
+\newlength{\twosubht}
+\newsavebox{\twosubbox}
+
+% 修改autoref前后间距，解决标签应用后的前后间距问题
+\usepackage{letltxmacro}
+\LetLtxMacro\oldautoref\autoref
+\DeclareRobustCommand{\autoref}[1]{{\let\nobreakspace\space\oldautoref{#1}\space}}
+
+\newcommand*\secref[1]{\ref{#1}节}
+
+\usepackage{cleveref}
+\newcommand{\crefrangeconjunction}{~--~}
+\Crefname{table}{表}{表}
+\Crefname{figure}{图}{图}
+
+% %%  using line number.
+% \usepackage[pagewise]{lineno}
+% \makeatletter
+% \def\makeLineNumberLeft{%
+%   \linenumberfont\llap{\hb@xt@\linenumberwidth{\LineNumber\hss}\hskip\linenumbersep}% left line number
+%   \hskip\columnwidth% skip over column of text
+%   \rlap{\hskip\linenumbersep\hb@xt@\linenumberwidth{\hss\LineNumber}}\hss}% right line number
+% \leftlinenumbers% Re-issue [left] option
+% \makeatother
+
+
+
+
+\begin{document}
 %定义所有的eps文件在 figures 子目录下
 \graphicspath{{figures/}}
 
@@ -26,37 +122,34 @@
 \tableofcontents
 
 % 对照表
-\include{body/denotation}  
+% \include{body/denotation}
 
 \mainmatter
-\include{body/chap01}
-\include{body/chap02}
-\include{body/chap03}
-\include{body/chap04}
 
+\raggedbottom
+%% using line count
+% \linenumbers
+
+% \nolinenumbers
 %%% 结论
-\include{body/conclusion}
+\input{body/chapter/univ.tex}
 
 %%% 致谢
-\include{body/ack}
+\include{body/chapter/ack.tex}
 
 
 %%% 参考文献
 %Included for Gather Purpose only:
 %input "ref/refs.bib"
 \bibliographystyle{HUSTThesis}
-\bibliography{ref/refs}
+\bibliography{ref/thesis}
 
+% ---------------------------------------------
 
-
-%%% 附录（根据自己实际情况增加或删减）
+%%% 附录
 \begin{appendix}
-\input{body/appendix01}
-\input{body/publications}
-\input{body/appendix02}
-\input{body/project}
-\input{body/appendix03}
-\input{body/appendix04}
+  \input{body/appendix/app.tex}
+
 \end{appendix}
 
 \end{document}

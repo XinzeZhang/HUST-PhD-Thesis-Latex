@@ -1,0 +1,130 @@
+
+% \begin{figure}
+%     % \centering
+%     \begin{minipage}[t]{0.45\textwidth}
+%         \raggedleft
+%         \begin{subfigure}[t]{\linewidth}
+%             \begin{python}
+%                 from task.parser import get_parser
+%                 from task.TaskWrapper import Task
+%                 if __name__ == "__main__":
+                    
+%                     args = get_parser()
+                
+%                     args.cuda = True
+%                     args.datafolder = 'paper.sm'
+%                     args.dataset = 'mg'
+%                     args.H = 84
+%                     args.model = 'esn'
+%                     args.rep_times = 20
+%                     args.metrics = ['rmse','nrmse', 'mape']
+                    
+%                     task = Task(args)
+%                     task.tuning()
+%                     task.conduct()
+%                     task.evaluation(args.metrics)
+                
+%                 \end{python}
+%                 \caption{}
+%         \end{subfigure}
+        
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}[t]{0.45\textwidth}
+%         \begin{subfigure}[t]{\linewidth}
+%             \begin{python}
+%                 from task.parser import get_parser
+%                 from task.TaskWrapper import Task
+%                 if __name__ == "__main__":
+                    
+%                     args = get_parser()
+            
+%                     task = Task(args)
+%                     task.tuning()
+%                     task.conduct()
+%                     task.evaluation(args.metrics)
+                
+%                 \end{python}
+%           \caption{b}
+%         \end{subfigure}
+%         \\
+%         \begin{subfigure}[b]{\linewidth}
+%             \begin{bash}
+%                 python task.py -datafolder paper.sm -dataset mg -H 84 -model esn -rep_times 20 -metrics rmse nrmse mape
+%             \end{bash}
+%             \caption{c}
+%         \end{subfigure}
+%     \end{minipage}
+
+%     \caption{MG数据集上构造ESN预测模型进行提前84步预测建模任务}
+%   \end{figure}
+
+\begin{figure}[t!]
+    \begin{minipage}[b]{0.45\textwidth}
+        \begin{python}
+            from task.parser import get_parser
+            from task.TaskWrapper import Task
+
+            if __name__ == "__main__":
+                
+                args = get_parser()
+        
+                task = Task(args)
+                task.tuning()
+                task.conduct()
+                task.evaluation(args.metrics)
+            
+            \end{python}
+        \caption{预测建模框架的主文件：task.py \label{fig:ch.univ.task}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \begin{python}
+            from task.TaskLoader import Opt
+            import importlib
+            import ...
+
+            class Task(Opt):
+                def __init__(self, args):
+                    
+                    self.data_config(args)
+                    self.model_config(args)
+                    self.exp_config(args)
+
+                ...
+            \end{python}
+        \caption{TaskWrapper中的Task类 \label{fig:ch.univ.init}}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[t!]
+    \begin{python}
+        from task.parser import get_parser
+        from task.TaskWrapper import Task
+        if __name__ == "__main__":
+            
+            args = get_parser()
+        
+            args.cuda = True
+            args.datafolder = 'paper.sm'
+            args.dataset = 'mg'
+            args.H = 17
+            args.model = 'esn'
+            args.rep_times = 20
+            args.metrics = ['rmse','nrmse', 'mape']
+            
+            task = Task(args)
+            task.tuning()
+            task.conduct()
+            task.evaluation(args.metrics)
+        
+        \end{python}
+        \caption{自定义主文件task.py传入任务参数的示例\label{fig:ch.univ.mg} }
+    \end{figure}
+
+    \begin{figure}[t!]
+        \begin{bash}
+            python task.py -datafolder paper.sm -dataset mg -H 17 -model esn -rep_times 20 -metrics rmse nrmse mape
+        \end{bash}
+            \caption{由命令行传入任务参数的示例\label{fig:ch.univ.bash} }
+        \end{figure}

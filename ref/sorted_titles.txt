@@ -1,0 +1,187 @@
+a cnntextendashlstm model for gold price time-series forecasting
+a combination method for interval forecasting of agricultural commodity futures prices
+a deep learning ensemble approach for crude oil price forecasting
+a dual-stage attention-based recurrent neural network for time series prediction
+a fast grid search method in support vector regression forecasting time series
+a hybrid short-term load forecasting model based on variational mode decomposition and long short-term memory networks considering relevant factors with bayesian optimization algorithm
+a method of solving a convex programming problem with convergence rate ok2
+a new approach of integrating piecewise linear representation and weighted support vector machine for forecasting stock turning points
+a novel double deep elms ensemble system for time series forecasting
+a novel framework of reservoir computing for deterministic and probabilistic wind power forecasting
+a powerful generative model using random weights for the deep image representation
+a pso and pattern search based memetic algorithm for svms parameters optimization
+a review of designs and applications of echo state networks
+a review on neural networks with random weights
+a short-term traffic flow forecasting method based on the hybrid pso-svr
+a simulation study of artificial neural networks for nonlinear time-series forecasting
+a state-of-the-art survey on deep learning theory and architectures
+a statistical approach to mechanized encoding and searching of literary information
+a statistical interpretation of term specificity and its application in retrieval
+a switching delayed pso optimized extreme learning machine for short-term load forecasting
+adam a method for stochastic optimization
+adaptive ensemble models of extreme learning machines for time series prediction
+adaptive methods for short-term electricity load forecasting during covid-19 lockdown in france
+adaptive nonlinear system identification with echo state networks
+adaptive subgradient methods for online learning and stochastic optimization
+algorithmic financial trading with deep convolutional neural networks time series to image conversion approach
+algorithms for hyper-parameter optimization
+an approach to reservoir computing design and training
+an improved analysis of stochastic gradient descent with momentum
+an information-theoretic perspective of tftextendashidf measures
+application of echo state networks in short-term electric load forecasting
+arima forecasting of primary energy demand by fuel in turkey
+audio texture synthesis with random neural networks improving diversity and quality
+automatic time series forecasting the forecast package for r
+autost efficient neural architecture search for spatio-temporal prediction
+back propagation neural network with adaptive differential evolution algorithm for time series forecasting
+bohb robust and efficient hyperparameter optimization at scale
+cnn-based multivariate data analysis for bitcoin trend prediction
+cntk microsofts open-source deep-learning toolkit
+comparison of direct and iterative artificial neural network forecast approaches in multi-periodic time series forecasting
+comprehensive learning particle swarm optimization enabled modeling framework for multi-step-ahead influenza prediction
+computational methods for inverse problems
+context dependent recurrent neural network language model
+convolutional networks for images speech and time series
+convolutional neural networks for energy time series forecasting
+convolutional neural networks for time series classification
+crude oil price forecasting based on internet concern using an extreme learning machine
+cubic regularization of newton method and its global performance
+day-ahead building-level load forecasts using deep learning vs traditional time-series techniques
+decoupled echo state networks with lateral inhibition
+decoupled weight decay regularization
+deep convolutional neural networks on multichannel time series for human activity recognition
+deep learning
+deep learning for household load forecastingtextemdasha novel pooling deep rnn
+deep reservoir computing a critical experimental analysis
+deepar probabilistic forecasting with autoregressive recurrent networks
+delving deep into rectifiers surpassing human-level performance on imagenet classification
+design of deep echo state networks
+designing neural network architectures using reinforcement learning
+developing a deep learning framework with two-stage feature selection for multivariate financial time series forecasting
+dstp-rnn a dual-stage two-phase attention-based recurrent neural network for long-term and multivariate time series prediction
+dynamical regularized echo state network for time series prediction
+ea-lstm evolutionary attention-based lstm for time series prediction
+echo state property of deep reservoir computing networks
+economic hyperparameter optimization with blended search strategy
+effective electricity energy consumption forecasting using echo state network improved by differential evolution algorithm
+effective long short-term memory with differential evolution algorithm for electricity price prediction
+effective long short-term memory with fruit fly optimization algorithm for time series forecasting
+effective sparse adaboost method with esn and foa for industrial electricity consumption forecasting in china
+electricity load forecasting using support vector regression with memetic algorithms
+electricity price and load forecasting using enhanced convolutional neural network and enhanced support vector regression in smart grids
+empirical mode decomposition based ensemble deep learning for load demand time series forecasting
+energy forecasting a review and outlook
+error-feedback stochastic modeling strategy for time series forecasting with convolutional neural networks
+evolutionary support vector machine for rmb exchange rate forecasting
+evolutive design of arma and ann models for time series forecasting
+evolving deep neural networks
+exponential smoothing the state of the art
+exponential smoothing the state of the arttextemdash part ii
+extreme learning machine for multilayer perceptron
+extreme learning machine for regression and multiclass classification
+extreme learning machine theory and applications
+feature selection of autoregressive neural network inputs for trend time series forecasting
+feed forward neural networks with random weights
+financial time series forecasting with deep learning  a systematic literature review 2005textendash 2019
+financial time series prediction using l21rf-elm
+forecasting across time series databases using recurrent neural networks on groups of similar series a clustering approach
+forecasting energy consumption and wind power generation using deep echo state network
+forecasting stock indices with back propagation neural network
+forecasting structural time series models and the kalman filter
+forecasting tourism demand with arma-based methods
+frugal optimization for cost-related hyperparameters
+functional deep echo state network improved by a bi-level optimization approach for multivariate time series classification
+global energy forecasting competition 2017 hierarchical probabilistic load forecasting
+growing echo state network with an inverse-free weight update strategy
+growing echo-state network with multiple subreservoirs
+harnessing nonlinearity predicting chaotic systems and saving energy in wireless communication
+hierarchical representations for efficient architecture search
+high-dimensional signature compression for large-scale image classification
+hybrid filtertextendash wrapper feature selection for short-term load forecasting
+hybrid regularized echo state network for multivariate chaotic time series prediction
+image classification with the fisher vector theory and practice
+imagenet a large-scale hierarchical image database
+imagenet classification with deep convolutional neural networks
+impact of random weights on nonlinear system identification using convolutional neural networks
+improved eemd-based crude oil price forecasting using lstm networks
+insights into randomized algorithms for neural networks practical issues and common pitfalls
+investigation of diversity strategies in rvfl network ensemble learning for crude oil price forecasting
+investigation of machine learning techniques in forecasting of blood pressure time series data
+large-scale image retrieval with compressed fisher vectors
+learning deep representations via extreme learning machines
+learning word vectors for sentiment analysis
+long short-term memory
+long term time series prediction with multi-input multi-output local learning
+long-term electricity load forecasting current and future trends
+long-term prediction of time series by combining direct and mimo strategies
+making a science of model search hyperparameter optimization in hundreds of dimensions for vision architectures
+methodology for long-term prediction of time series
+mlp ensembles improve long term prediction accuracy over single networks
+model selection beyond the bayesianfrequentist divide
+modified bbo-based multivariate time-series prediction system with feature subset selection and model parameter optimization
+multi-reservoir echo state networks with sequence resampling for nonlinear time-series prediction
+multi-step-ahead time series prediction using multiple-output support vector regression
+multivariate time series predictor with parameter optimization and feature selection based on modified binary salp swarm algorithm
+neural architecture search a survey
+neural machine translation by jointly learning to align and translate
+nevergrad black-box optimization platform
+newtons method in general analysis
+on the convergence of adam and beyond
+on the convergence rate of training recurrent neural networks
+on the difficulty of training recurrent neural networks
+on the importance of initialization and momentum in deep learning
+on the properties of neural machine translation encodertextendash decoder approaches
+on-line learning of indoor temperature forecasting models towards energy efficiency
+optimal deep learning lstm model for electric load forecasting using feature selection and genetic algorithm comparison with machine learning approaches
+optimizing the echo state network with a binary particle swarm optimization algorithm
+optuna a next-generation hyperparameter optimization framework
+particle swarm model selection
+particle swarm optimization
+photovoltaic power forecasting based lstm-convolutional network
+power system load forecasting using mobility optimization and multi-task learning in covid-19
+practical bayesian optimization of machine learning algorithms
+pso-based analysis of echo state network parameters for time series forecasting
+pso-based growing echo state network
+pso-mismo modeling strategy for multistep-ahead time series prediction
+pytorch an imperative style high-performance deep learning library
+random forest based hourly building energy prediction
+random search for hyper-parameter optimization
+randomness in neural networks an overview
+recent advances in physical reservoir computing a review
+recurrent neural networks for time series forecasting current status and future directions
+reducing the dimensionality of data with neural networks
+regularization incremental extreme learning machine with random reduced kernel for regression
+reservoir computing approaches to recurrent neural network training
+robust online time series prediction with recurrent neural networks
+seasonal forecasting of agricultural commodity price using a hybrid stl and elm method evidence from the vegetable market in china
+sequence to sequence learning with neural networks
+short-term electricity load forecasting model based on emd-gru with feature selection
+short-term load forecasting by using a combined method of convolutional neural networks and fuzzy time series
+short-term load forecasting of central china based on dpso-lstm
+short-term load forecasting using general exponential smoothing
+short-term traffic volume prediction by ensemble learning in concept drifting environments
+small and multi-peak nonlinear time series forecasting using a hybrid back propagation neural network
+stacked autoencoder with echo-state regression for tourism demand forecasting using search query data
+stochastic choice of basis functions in adaptive function approximation and the functional-link net
+stochastic configuration networks fundamentals and algorithms
+stochastic gradient descent tricks
+tensorflow a system for large-scale machine learning
+the echo state approach to analysing and training recurrent neural networks-with an erratum note
+the elements of statistical learning data mining inference and prediction
+the future of time series
+the holt-winters forecasting procedure
+the nature of statistical learning theory
+time series analysis forecasting and control
+time series forecasting of covid-19 transmission in canada using lstm networks
+time series forecasting using backpropagation neural networks
+time series prediction forecasting the future and understanding the past
+time-series extreme event forecasting with neural networks at uber
+towards automated deep learning efficient joint neural architecture and hyperparameter search
+traffic speed prediction and congestion source exploration a deep learning method
+trend analysis of climate time series a review of methods
+trend timetextendash series modeling and forecasting with neural networks
+tune a research platform for distributed model selection and training
+understanding the difficulty of training deep feedforward neural networks
+universal approximation using incremental constructive feedforward networks with random hidden nodes
+very deep convolutional networks for large-scale image recognition
+wind power forecasting using attention-based gated recurrent unit network

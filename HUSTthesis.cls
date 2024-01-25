@@ -166,9 +166,7 @@
 % 加载图形宏包
 \RequirePackage{graphicx}
 
-% 加载此宏包以支持并排图形，打开 config 选项以兼容过时宏包
-% subfigure
-\RequirePackage[config]{subfig}
+
 
 % 首行缩进宏包
 \RequirePackage{indentfirst}
@@ -190,16 +188,79 @@
 % \setCJKfamilyfont{fs}{FangSong}
 
 %改动1
-\setCJKmainfont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimSun.ttf}
-\setCJKsansfont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimHei.ttf}
-\setCJKmonofont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{simfang.ttf}
-\setCJKmonofont[Path=font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{STZhongsong.ttf}
+\setCJKmainfont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimSun.ttf}
+\setCJKsansfont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimHei.ttf}
+\setCJKmonofont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{simfang.ttf}
+\setCJKmonofont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{STZhongsong.ttf}
 
-\setCJKfamilyfont{zhongsong}[Path=font/,AutoFakeBold = {2.25}]{STZhongsong.ttf}
-\setCJKfamilyfont{song}[Path=font/,AutoFakeBold = {2.25}]{SimSun.ttf}
-\setCJKfamilyfont{hei}[Path=font/,AutoFakeBold = {2.25}]{SimHei.ttf}
-\setCJKfamilyfont{kai}[Path=font/,AutoFakeBold = {2.25}]{simkai.ttf}
-\setCJKfamilyfont{fs}[Path=font/,AutoFakeBold = {2.25}]{simfang.ttf}
+\setCJKfamilyfont{zhongsong}[Path=supply/font/,AutoFakeBold = {2.25}]{STZhongsong.ttf}
+\setCJKfamilyfont{song}[Path=supply/font/,AutoFakeBold = {2.25}]{SimSun.ttf}
+\setCJKfamilyfont{hei}[Path=supply/font/,AutoFakeBold = {2.25}]{SimHei.ttf}
+\setCJKfamilyfont{kai}[Path=supply/font/,AutoFakeBold = {2.25}]{simkai.ttf}
+\setCJKfamilyfont{fs}[Path=supply/font/,AutoFakeBold = {2.25}]{simfang.ttf}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 重定义字体命令
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\let\songti\song
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\let\fangsong\fs
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\let\kaishu\kai
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\let\heiti\hei
+\newcommand{\zhongsong}{\CJKfamily{zhongsong}}        % 华文中宋
+\let\STzhongsong\zhongsong
+% \newcommand{\you}{\CJKfamily{you}}      % 幼圆
+% \let\youyuan\you
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 重定义字号命令，采用薛瑞尼版本中关于字号命令的定义，
+% 消除了字体大小和行距的紧耦合
+% 命令中的可选参数用于指定行距，默认为单倍行距。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength\thu@linespace
+\newcommand{\thu@choosefont}[2]{%
+   \setlength{\thu@linespace}{#2*\real{#1}}%
+   \fontsize{#2}{\thu@linespace}\selectfont}
+\def\thu@define@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][\baselinestretch]{%
+    \thu@choosefont{##1}{#2}}}
+\thu@define@fontsize{dachu}{53pt}
+\thu@define@fontsize{chuhao}{42pt}
+\thu@define@fontsize{xiaochu}{36pt}
+\thu@define@fontsize{yihao}{28pt}
+\thu@define@fontsize{xiaoyi}{24pt}
+\thu@define@fontsize{erhao}{22pt}
+\thu@define@fontsize{xiaoer}{18pt}
+\thu@define@fontsize{sanhao}{16pt}
+\thu@define@fontsize{xiaosan}{15pt}
+\thu@define@fontsize{sihao}{14pt}
+\thu@define@fontsize{banxiaosi}{13pt}
+\thu@define@fontsize{xiaosi}{12pt}
+\thu@define@fontsize{dawu}{11pt}
+\thu@define@fontsize{wuhao}{10.5pt}
+\thu@define@fontsize{xiaowu}{9pt}
+\thu@define@fontsize{liuhao}{7.5pt}
+\thu@define@fontsize{xiaoliu}{6.5pt}
+\thu@define@fontsize{qihao}{5.5pt}
+\thu@define@fontsize{bahao}{5pt}
+%% 正文小四号（12pt）字，行距为固定值18 pt，22/12=1.67倍行距 行间距不小于三分之二字高度
+%\renewcommand\normalsize{\fontsize{12pt}{18pt}\selectfont}
+% \renewcommand\normalsize{\fontsize{12pt}{20pt}\selectfont}
+\renewcommand\normalsize{\fontsize{12pt}{23.1pt}\selectfont}
+\renewcommand\small{\fontsize{10.5pt}{17.5pt}\selectfont}
+
+% 加载此宏包以支持并排图形，打开 config 选项以兼容过时宏包
+% subfigure
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\captionsetup[sub]{font = small}
 
 
 % 加强定理环境的宏包
@@ -248,6 +309,12 @@
   pdfstartview=FitH}
 \RequirePackage{hypernat}
 
+\def\figureautorefname{图}%
+\def\tableautorefname{表}%
+\def\equationautorefname{公式}
+\def\sectionautorefname{节}
+\def\subsectionautorefname{节}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 定义版面尺寸，这一部分根据情况可能需要作部分调整。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -262,10 +329,12 @@
 \setlength{\headheight}{0.9cm}
 \setlength{\topskip}{0pt}
 \setlength{\skip\footins}{15pt}
-\setlength{\footskip}{1.3cm}
+% \setlength{\footskip}{1.3cm}
+\setlength{\footskip}{1.6cm}
 \setlength{\topmargin}{3.0cm-1in}
 \setlength{\headsep}{0.5cm}
-\addtolength{\textheight}{-7.0cm}
+% \addtolength{\textheight}{-7.0cm}
+\addtolength{\textheight}{-7.3cm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -276,10 +345,15 @@
 \allowdisplaybreaks[4]
 
 % 设置公式与上下文的间距
-\abovedisplayskip=10bp plus 2bp minus 2bp
-\abovedisplayshortskip=10bp plus 2bp minus 2bp
+% \abovedisplayskip=10bp plus 2bp minus 2bp
+% \abovedisplayshortskip=10bp plus 2bp minus 2bp
+% \belowdisplayskip=\abovedisplayskip
+% \belowdisplayshortskip=\abovedisplayshortskip
+\abovedisplayskip=10pt plus 3pt minus 9pt
+\abovedisplayshortskip=0pt plus 3pt
 \belowdisplayskip=\abovedisplayskip
-\belowdisplayshortskip=\abovedisplayshortskip
+\belowdisplayshortskip=7pt plus 3pt minus 4pt
+
 
 % 设置公式的编号形式，形式为 (式1.1)，\tagform@ 参考 amsmath 中的命令
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
@@ -360,6 +434,8 @@
   \fi
   \vskip\belowcaptionskip}
 
+
+
 % 设置标题标签的样式
 \def\thefigure{\@arabic\c@figure}
 \def\fnum@figure{\figurename~\thefigure}
@@ -373,9 +449,9 @@
 % 下面两条命令可以使标题编号随着每开始新的一章而重新开始，即按章的顺序编号
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
-%\renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
-% 定制引用子图的标记形式
-%\renewcommand{\p@subfigure}{:}
+% \renewcommand{\thesubfigure}{\thefigure--(\arabic{subfigure})}
+% % 定制引用子图的标记形式
+% \renewcommand{\p@subfigure}{:}
 
 
 % 定义新命令\hlinewd 来改变水平线的粗细
@@ -543,61 +619,6 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 重定义字体命令
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\song}{\CJKfamily{song}}    % 宋体
-\let\songti\song
-\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
-\let\fangsong\fs
-\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
-\let\kaishu\kai
-\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
-\let\heiti\hei
-\newcommand{\zhongsong}{\CJKfamily{zhongsong}}        % 华文中宋
-\let\STzhongsong\zhongsong
-% \newcommand{\you}{\CJKfamily{you}}      % 幼圆
-% \let\youyuan\you
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 重定义字号命令，采用薛瑞尼版本中关于字号命令的定义，
-% 消除了字体大小和行距的紧耦合
-% 命令中的可选参数用于指定行距，默认为单倍行距。
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newlength\thu@linespace
-\newcommand{\thu@choosefont}[2]{%
-   \setlength{\thu@linespace}{#2*\real{#1}}%
-   \fontsize{#2}{\thu@linespace}\selectfont}
-\def\thu@define@fontsize#1#2{%
-  \expandafter\newcommand\csname #1\endcsname[1][\baselinestretch]{%
-    \thu@choosefont{##1}{#2}}}
-\thu@define@fontsize{dachu}{53pt}
-\thu@define@fontsize{chuhao}{42pt}
-\thu@define@fontsize{xiaochu}{36pt}
-\thu@define@fontsize{yihao}{28pt}
-\thu@define@fontsize{xiaoyi}{24pt}
-\thu@define@fontsize{erhao}{22pt}
-\thu@define@fontsize{xiaoer}{18pt}
-\thu@define@fontsize{sanhao}{16pt}
-\thu@define@fontsize{xiaosan}{15pt}
-\thu@define@fontsize{sihao}{14pt}
-\thu@define@fontsize{banxiaosi}{13pt}
-\thu@define@fontsize{xiaosi}{12pt}
-\thu@define@fontsize{dawu}{11pt}
-\thu@define@fontsize{wuhao}{10.5pt}
-\thu@define@fontsize{xiaowu}{9pt}
-\thu@define@fontsize{liuhao}{7.5pt}
-\thu@define@fontsize{xiaoliu}{6.5pt}
-\thu@define@fontsize{qihao}{5.5pt}
-\thu@define@fontsize{bahao}{5pt}
-%% 正文小四号（12pt）字，行距为固定值18 pt，18/12=1.5倍行距
-%\renewcommand\normalsize{\fontsize{12pt}{18pt}\selectfont}
-\renewcommand\normalsize{\fontsize{12pt}{22pt}\selectfont}
-%改动2
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 用于中文段落缩进和正文版式
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -640,12 +661,12 @@
 \setcounter{secnumdepth}{3}
 
 % 章序号与章名之间空一个汉字符，黑体三号字，居中书写，单倍行距，
-% 段前空24磅，段后空20磅。
+% 段前空20磅，段后空20磅。
 \renewcommand \thechapter {\@arabic\c@chapter}
 \def\@makechapterhead#1{%
-  \vspace*{24bp}%
+  \vspace*{20bp}%
   \begingroup
-  \hei\sanhao[1]\centering
+  \hei \bfseries \sanhao[1]\centering
     \ifnum \c@secnumdepth >\m@ne
       \thechapter\hskip1em
     \fi
@@ -656,9 +677,9 @@
   }
 
 \def\@makeschapterhead#1{%
-  \vspace*{24bp}%
+  \vspace*{20bp}%
   \begingroup
-  \hei\sanhao[1]\centering
+  \hei \bfseries \sanhao[1]\centering
   \interlinepenalty\@M
   #1\par\endgroup
   \nobreak
@@ -669,30 +690,30 @@
 % 一级节标题，例如：“2.1  理论分析”。
 % 节标题序号与标题名之间空一个汉字符。
 % 采用黑体四号（14pt）字居左书写，1.5倍行距（21pt），
-% 段前空24磅，段后空6磅。
+% 段前空14磅，段后空7磅。
 \def\@seccntformat#1{\csname the#1\endcsname\hskip 1em\relax}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {24bp}%
-                                   {6bp}%
-                                   {\hei\sihao[1.5]}}
+                                   {14bp}%
+                                   {7bp}%
+                                   {\hei \bfseries \sihao[1.5]}}
 
 % 二级节标题，例如：“2.1.1  理论分析”。
 % 节标题序号与标题名之间空一个汉字符。
 % 采用黑体半小四号（13.5pt）字居左书写，1.5倍行距（19.5pt），
 % 段前空16磅，段后空6磅。
 \renewcommand\subsection{\@startsection {subsection}{2}{\z@}%
-                                   {16bp}%
-                                   {6bp}%
-                                   {\hei\banxiaosi[1.5]}}
+                                   {14bp}%
+                                   {7bp}%
+                                   {\hei \bfseries \banxiaosi[1.5]}}
 
 % 三级节标题，例如：“2.1.1.1  理论分析”。
 % 节标题序号与标题名之间空一个汉字符。
 % 采用黑体小四号（12pt）字居左书写，1.5倍行距（18pt），
 % 段前空16磅，段后空6磅。
 \renewcommand\subsubsection{\@startsection {subsubsection}{3}{\z@}%
-                                   {16bp}%
-                                   {6bp}%
-                                   {\hei\xiaosi[1.5]}}
+                                   {14bp}%
+                                   {7bp}%
+                                   {\hei \bfseries \xiaosi[1.5]}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -751,8 +772,9 @@
 % 定义页眉页脚，参考 fancyhdr 宏包的代码
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %改动4
-\newcommand{\headrulewidth}{0.4pt}
-\newcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\headrulewidth}{1pt}
+\newcommand{\footrulewidth}{0.5pt}
 \def\ps@plain{%
   \ifHUST@finalformat
     \def\@oddhead{}
@@ -760,9 +782,9 @@
     \def\@oddhead{%
       \vbox{%
         \parbox[b]{\textwidth}{\centering\sihao%
-          \ziju{0.8em} \kai \sanhao[1] \HUST@schoolename\HUST@apply}
-        \vskip8pt
-        \hspace{-4mm} \vbox{\hspace{-3mm} \hrule width 1.04\textwidth height\headrulewidth depth0pt\vskip1.0pt\hrule width 1.04\textwidth}}}\fi%
+          \ziju{0.81em} \kai \bfseries \sanhao[1] \textcolor[RGB]{212,14,14}{\HUST@schoolename\HUST@apply}}
+        \vskip6pt
+        \hspace{-4mm} \vbox{\hspace{-3mm} \textcolor[RGB]{212,14,14}{\hrule width 1.04\textwidth height\headrulewidth depth0pt\vskip1pt \hrule width 1.04\textwidth height\headrulewidth}}}}\fi%
     \let\@evenhead=\@oddhead
   \ifHUST@finalformat
    \def\@oddfoot{%
@@ -772,18 +794,18 @@
       }}}
    \else
    \def\footrule{{\vskip-0.3\normalbaselineskip\vskip-\footrulewidth
-   \hrule\@width 1.04\textwidth\@height\footrulewidth\vskip0.3\normalbaselineskip}}
+   \hrule\@width 1.04\textwidth\@height\footrulewidth\vskip0.45\normalbaselineskip}}
    \def\@oddfoot{%
      \hbox to \textwidth{%
      \hspace{-4mm}\vbox{%
+     \textcolor[RGB]{212,14,14}
       \footrule
-      \hfill \hspace{-4mm} \parbox[t]{\textwidth}{\centering\wuhao\thepage\strut}\hfill
+      \hfill \hspace{-4mm} \parbox[t]{\textwidth}{\hspace{10mm}\centering\wuhao\thepage\strut} \vspace{3mm}\hfill
       }}}
    \fi
   \let\@evenfoot=\@oddfoot}
 \pagestyle{plain}
 \renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ ~~#1}{}}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 定义脚注
@@ -856,6 +878,8 @@
 \long\def\eabstract#1{\long\def\HUST@eabstract{#1}}\long\def\HUST@eabstract{}
 \def\ekeywords#1{\def\HUST@ekeywords{#1}}\def\HUST@ekeywords{}
 
+\def\dctab#1{\def\HUST@dctab{#1}}\def\HUST@dctab{}
+
 % 中文封面
 \newcommand{\HUST@ctitlepage}{
     \begin{center}
@@ -874,7 +898,7 @@
     %\renewcommand{\baselinestretch}{1.5}
     \vspace{2.0cm}
     \begin{center}
-    \includegraphics[scale=1.14]{figures/hust-flash-eps-crop.png}\\[1.3cm]
+    \includegraphics[scale=0.9]{supply/figures/hust_label.png}\\[1.3cm]
     \vspace{-0.8cm}
     \ziju{5bp}\dachu[1]{\bfseries \zhongsong \HUST@apply} \\%\CJKfamily{fzcs}
     \vspace{-0.4cm}
@@ -906,33 +930,19 @@
     \end{center}}}
     \fi
     \end{center}}
+
 % 答辩委员会
 \newcommand{\HUST@defencecommittee}{
 \begin{center}\song\sanhao
-\textbf{答辩委员会}\\
+{\hei\bfseries 答辩委员会}\\
 \vspace{2.0cm} \sihao
 \renewcommand{\arraystretch}{2}
-\begin{tabular}{|p{0.9cm}|p{1.8cm}|p{1.8cm}|p{5.4cm}|}
-    \hline
-    &\makecell{\textbf{姓名}}&\makecell[c]{\textbf{职称}}&\makecell[c]{\textbf{单位}}\\
-    \hline
-    主席&&&\\
-    \hline
-    \multirow{6}{*}{委员}&&&\\
-    \cline{2-4}
-    &&&\\
-    \cline{2-4}
-    &&&\\
-    \cline{2-4}
-    &&&\\
-    \cline{2-4}
-    &&&\\
-    \cline{2-4}
-    &&&\\
-    \hline
-\end{tabular}
+
+\HUST@dctab
+
 \end{center}
 }
+
 % 英文封面
 \newcommand{\HUST@etitlepage}{%
     \begin{center}
@@ -1134,7 +1144,7 @@
 
 % 定义封底的“攻读博士学位期间发表的学术论文目录”
 \newenvironment{publications}{
-   \clearpage
+  %  \clearpage
    \phantomsection
    \chapter{\HUST@publication@title}
    }
@@ -1150,10 +1160,24 @@
 
 % 定义封底的“攻读博士学位期间参与的科研项目”
 \newenvironment{project}{
-   \clearpage
+  %  \clearpage
    \phantomsection
    \chapter{\HUST@project@title}
    }
+
+  % 定义封底的“攻读博士学位期间参与的科研项目”
+   \newenvironment{paperThesis}{
+  %  \clearpage
+   \phantomsection
+   \chapter{\HUST@paperThesis@title}
+   }
+
+   % 定义封底的“攻读博士学位期间所获奖励”
+\newenvironment{honor}{
+  % \clearpage
+  \phantomsection
+  \chapter{\HUST@honor@title}
+  }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1250,11 +1274,11 @@
 \newtheorem{example}{例}[chapter]
 \theoremsymbol{\ensuremath{\square}}
 \theoremstyle{nonumberplain}
-\newtheorem{proof}{证明}
+\newtheorem{proof}{\bfseries \hei{证明}}
 
 
 
-\renewcommand\contentsname{\bfseries \hei 目\hspace{2em}录}
+\renewcommand\contentsname{\hei \bfseries 目\hspace{2em}录}
 \renewcommand\listfigurename{插图}
 \renewcommand\listtablename{表格}
 
@@ -1334,7 +1358,7 @@
 \newcommand{\HUST@keywords}{关键词：}
 \newcommand{\HUST@denotation@name}{主要符号对照表}
 \newcommand{\HUST@ackshortname}{致谢}
-\newcommand{\HUST@ackname}{致\hspace{2em}谢}
+\newcommand{\HUST@ackname}{致\hspace{1em}谢}
 \newcommand{\HUST@acklongname}{致谢与声明}
 \newcommand{\HUST@declare}{独创性声明}
 \newcommand{\HUST@declaretext}{\hspace{2em}本人声明所呈交的学位论文是我个人在导师的指导下进行的研究工作及取得的研究成果。
@@ -1342,11 +1366,15 @@
 做出贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
 \newcommand{\HUST@signature}{签\hspace{1em}名：}
 \newcommand{\HUST@backdate}{日\hspace{1em}期：}
+
 \newcommand{\HUST@publication@title}{攻读博士学位期间取得的研究成果}
 \newcommand{\HUST@patent@title}{攻读博士学位期间申请的发明专利和其他成果}
 \newcommand{\HUST@project@title}{攻读博士学位期间参与的科研项目}
+\newcommand{\HUST@honor@title}{攻读博士学位期间所获奖励}
+\newcommand{\HUST@paperThesis@title}{学术成果与博士学位论文的关系}
 
 \endinput
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% End of HUSTthesis.cls  %%%%%%%%%%%%%%%%%%%%%%%%%%%%

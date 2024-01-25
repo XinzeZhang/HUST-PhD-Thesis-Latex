@@ -1,0 +1,56 @@
+
+\begin{figure}[t!]
+    \begin{python}
+        class TaskDataset(Opt):
+            def __init__(self, args):
+                super().__init__()
+                self.args = args
+                self.info = Opt()
+                self.info.normal = args.normal
+                self.info.H = args.H
+                self.info_config()
+                self.sub_config()
+                self.info.num_series = len(self.seriesPack)                    
+            
+            def info_config(self, ):
+                pass
+            
+            def sub_config(self,):
+                pass
+            
+            ...
+    \end{python}
+    \caption{TaskLoader中的TaskDataset类\label{fig:ch.univ.data} }
+\end{figure}
+
+\begin{figure}[t!]
+    \begin{python}
+        from task.TaskLoader import TaskDataset
+        import pandas as pd
+
+        class gef_data(TaskDataset):
+            def __init__(self, args):
+                super().__init__(args)
+                
+            
+            def info_config(self):
+                self.info.normal = False
+                self.info.data_path = 'data/src/gef/2017_smd_hourly.xlsx'
+                self.info.series_name = ['ME','NH','VT','CT','RI','SEMA','WCMA','NEMA']
+                self.info.steps = 24*7
+
+            def sub_config(self,):
+                self.seriesPack = []
+                
+                for i，name in enumerate(self.info.series_name):
+                    df = pd.read_excel(self.info.data_path,sheet_name=name, index_col=None,header=0)
+                    raw_ts = df['RT_Demand'].values
+                    sub = self.pack_dataset(raw_ts)
+                    sub.index = i
+                    sub.name = name
+                    sub.merge(self.info)            
+
+                    self.seriesPack.append(sub)
+    \end{python}
+    \caption{GEF数据集数据预处理示例\label{fig:ch.univ.gef} }
+\end{figure}

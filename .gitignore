@@ -17,6 +17,7 @@
 *.cb
 *.cb2
 .*.lb
+main.pdf
 
 ## Intermediate documents:
 *.dvi
@@ -296,7 +297,7 @@ TSWLatexianTemp*
 
 ### macOS ###
 # General
-*.DS_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -323,11 +324,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/tasks.json
-!.vscode/launch.json
-*.code-workspace
+
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files

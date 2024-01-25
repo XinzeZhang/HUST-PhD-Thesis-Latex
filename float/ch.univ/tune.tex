@@ -1,0 +1,53 @@
+\begin{figure}[t!]
+    \begin{python}
+import ray,importlib
+from ray import tune
+from ray.air import session
+from ray.tune.search.optuna import OptunaSearch
+import ...
+
+class TaskTuner(Opt):
+    def __init__(self, opts, subPack, logger):
+        super().__init__()
+        self.merge(opts) 
+        self.points_to_evaluate = []
+        if 'points_to_evaluate' in self.tuner.dict:
+            self.points_to_evaluate = self.tuner.points_to_evaluate
+        
+        self.train_data = subPack.train_data
+        self.valid_data = subPack.valid_data
+        self.batch_size = subPack.batch_size
+        self.metric = 'vrmse'
+        self.logger = logger
+        self.algo_init()
+    
+    def algo_init(self,):    
+        tpe_search = OptunaSearch(metric=self.metric,mode='min',points_to_evaluate=self.points_to_evaluat)
+        self.algo_func = tpe_search()
+
+    def fitness(self, config):
+        _hyper = Opt(init=self.hyper)
+        _hyper.update(config) 
+
+        model = importlib.import_module(self.import_path)
+        model = getattr(model, self.class_name)
+        model = model(_hyper, self.logger)
+        fit_info = model.xfit(self.train_data, self.valid_data)
+        trmse, vrmse = fit_info.trmse, fit_info.vrmse
+
+        session.report({'trmse': trmse,'vrmse': vrmse,})
+    
+    def conduct(self,):
+        ray.init()
+        ray_tuner = tune.Tuner(
+            tune.with_resources(tune.with_parameters(self.fitness),resources=self.tuner.resource),
+            param_space=self.tuning.dict,
+            tune_config=tune.TuneConfig(search_alg=self.algo_func,num_samples=self.tuner.iters),
+            )
+        
+        results = ray_tuner.fit() 
+        best_result = results.get_best_result(self.metric, 'min')
+        return best_result.config
+    \end{python}
+    \caption{TaskTuner类示例\label{fig:ch.univ.ray}}
+\end{figure}

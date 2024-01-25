@@ -1,0 +1,243 @@
+
+
+\begin{figure}
+    \begin{python}
+    import torch
+    import torch.nn as nn
+    
+    class ESNCell(nn.Module):
+        def __init__(self, init = 'vanilla', hidden_size = 500, input_dim = 1, nonlinearity = 'tanh', leaky_r = 1, weight_scale = 0.9, iw_bound = (-0.1, 0.1), hw_bound=(-1,1),  device='cpu'):
+            super(ESNCell, self).__init__()
+            self.input_dim = input_dim
+            self.Hidden_Size = hidden_size
+            ...
+        
+            self.ih = nn.Linear(self.input_dim, self.Hidden_Size, bias=False).to(self.device)
+            self.hh = nn.Linear(self.Hidden_Size, self.Hidden_Size, bias=False).to(self.device)
+
+            self.weight_init(self,)
+            ...
+
+        def forward(self, current_input, last_state):
+            current_state = self.ih(current_input) + self.hh(last_state)
+            current_state = self.act_f(current_state)
+            _last_state = (1- self.leaky_r) * last_state + self.leaky_r * current_state
+            
+            return _last_state
+
+        ...            
+    \end{python}
+    \caption{回声状态网络单元模组示例\label{fig:ch.univ.esncell}}
+\end{figure}
+
+\begin{figure}
+    \begin{python}
+    import torch
+    import torch.nn as nn
+    
+    class esnLayer(nn.Module):
+        def __init__(self, init = 'vanilla', hidden_size = 500, input_dim = 1, nonlinearity = 'tanh', leaky_r = 1, weight_scale = 0.9, iw_bound = (-0.1, 0.1), hw_bound=(-1,1),  device='cpu'):
+            super(esnLayer, self).__init__()
+            self.esnCell = ESNCell(init=init,hidden_size=hidden_size,input_dim=input_dim,nonlinearity=nonlinearity,leaky_r=leaky_r,weight_scale=weight_scale,iw_bound=iw_bound,hw_bound=hw_bound,device=device)
+
+
+        def forward(self, x, _last_state = None):
+            with torch.no_grad():
+                samples, time_steps = x.shape[0], x.shape[2]
+                layer_hidden_state = torch.empty(samples,self.esnCell.Hidden_Size, time_steps).to(self.esnCell.device)
+                
+                last_state = torch.zeros(samples, self.esnCell.Hidden_Size).to(self.esnCell.device) if _last_state is None else _last_state.detach().clone().to(self.esnCell.device)
+
+                for t in range(time_steps):
+                    last_state = self.esnCell(x[:,:,t],  last_state)
+                    layer_hidden_state[:,:,t] = last_state                
+            
+            return layer_hidden_state, last_state
+
+        ...            
+    \end{python}
+    \caption{回声状态网络编码过程模组示例\label{fig:ch.univ.esnlayer}}
+\end{figure}
+
+
+\begin{figure}[t!]
+
+    \begin{subfigure}{\textwidth}
+        \begin{python}
+            class cesLayer(nn.Module):
+                def __init__(self, cnn_hyper, esn_hyper):
+                    super(cesLayer, self).__init__()
+                    self.cnnLayer = cnnLayer(**cnn_hyper.dict)
+                    self.esnLayer = esnLayer(**esn_hyper.dict)
+
+                def forward(self, x)
+                    fm, _ = self.cnnLayer(x)
+                    layer_hidden_state, last_state = self.esnLayer(fm)        
+                    return layer_hidden_state, last_state
+    
+                ...
+        \end{python}
+
+        \subcaption{卷积回声状态结构代码示例}
+
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+        \begin{python}
+            class escLayer(nn.Module):
+                def __init__(self, cnn_hyper, esn_hyper):
+                    super(cesLayer, self).__init__()
+                    self.cnnLayer = cnnLayer(**cnn_hyper.dict)
+                    self.esnLayer = esnLayer(**esn_hyper.dict)
+
+                def forward(self, x)
+                    layer_hidden_state, _ = self.esnLayer(x)
+                    fm, fm_flatten = self.cnnLayer(layer_hidden_state)
+                    return fm, fm_flatten
+    
+                ...
+        \end{python}
+
+        \subcaption{回声状态卷积结构代码示例}
+
+    \end{subfigure}
+
+    \caption{基于结构模组化设计的深度神经网络混合结构代码示例\label{fig:ch.univ.mix}} 
+\end{figure}
+
+
+\begin{figure}[t!]
+    \begin{python}
+import torch.nn as nn
+from task.metric import rmse
+import ...
+
+class EchoStateNetwork(nn.Module):
+    def __init__(self, opts=None, logger=None):
+        super(EchoStateNetwork, self).__init__()
+        self.opts = opts
+        self.logger = logger
+        
+        self.fit_info = Opt()
+        ...
+
+    def xfit(self, train_data, val_data):
+        train_loader = self.data_loader(train_data)
+        val_loader = self.data_loader(val_data)
+        h_states, x, y = self.batch_transform(train_loader)
+        
+        self.update_readout(h_states, x, y)
+        
+        pred = self.readout(self.io_check(h_states, x)[:,:,-1])
+        
+        _, y, pred = self.loader_pred(train_loader)
+        _, val_y, vpred = self.loader_pred(val_loader)
+
+        self.fit_info.trmse = rmse(y,pred)
+        self.fit_info.vrmse = rmse(val_y, vpred)
+
+        return self.fit_info
+    
+    ...
+    \end{python}
+    \caption{ESN.py文件中的EchoStateNetwork类示例\label{fig:ch.univ.esn}} 
+\end{figure}
+
+
+
+\begin{figure}[t!]
+    \begin{python}
+        class Model_base(Opt):
+            def __init__(self):
+                super().__init__()
+                
+                self.hyper = Opt()
+                self.tuner = Opt()
+                self.tuning = Opt()
+
+                self.base_init()
+                self.setting_init()
+                self.setting_modify()
+
+            ...
+    \end{python}
+    \caption{Model_base类示例\label{fig:ch.univ.mb} }
+\end{figure}
+
+
+\begin{figure}[t!]
+    \begin{python}
+        class esn_base(Model_base):
+            def base_init(self,):
+                self.import_path='models/stochastic/esn/ESN.py'
+                self.class_name = 'EchoStateNetwork'
+
+            def setting_init(self,):
+                self.hyper.input_dim = 1
+                self.hyper.hidden_size = 400
+                self.hyper.nonlinearity = 'sigmoid'
+                self.hyper.iw_bound = (-0.1, 0.1)
+                self.hyper.hw_bound = (-1, 1)
+                self.hyper.readout_steps = 2
+                ...
+
+            ...
+    \end{python}
+    \caption{继承Model_base类的esn_base子类\label{fig:ch.univ.esn_base} }
+\end{figure}
+
+\begin{figure}[t!]
+    \begin{minipage}[b]{0.45\textwidth}
+        \begin{subfigure}{\linewidth}
+            \begin{python}
+                class fcd_esn(esn_base):
+        
+                    def setting_modify(self,):
+                        self.hyper.readout_steps = 1
+        
+                    ...
+            \end{python}
+            \subcaption{继承esn_base类的fcd_esn子类示例\label{fig:ch.univ.fcd} }
+        \end{subfigure}
+
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \begin{subfigure}{\linewidth}
+            \begin{python}
+                class stk_esn(esn_base):
+        
+                    def setting_modify(self,):
+                        self.hyper.readout_steps = 168 / 2
+        
+                    ...
+            \end{python}
+            \subcaption{继承esn_base类的stk_esn子类示例\label{fig:ch.univ.stk} }
+        \end{subfigure}
+    \end{minipage}
+
+    \caption{基于esn_base类构造的不同多输出结构模型参数示例\label{fig:ch.univ.read}}
+\end{figure}
+
+\begin{figure}[t!]
+    \begin{python}
+from ray import tune
+from task.ModelSetting import esn_base
+
+class fcd_esn(esn_base):
+    def __init__(self):
+        super().__init__()
+        self.tuner.algo = 'tpe'
+        self.tuner.iters = 200
+        self.tuner.resource = {
+            'cpu': 5, 'gpu': 0.5
+        }
+        self.tuning.iw_bound = tune.loguniform(1e-5, 1e-1)
+        self.tuning.weight_scaling = tune.uniform(0.2, 0.99)
+        self.tuning.nonlinearity = tune.choice(['sigmoid', 'tanh'])
+        self.tuning.hidden_size = tune.qrandint(500, 1500, 50)
+    
+    ...
+    \end{python}
+\caption{优化器资源与搜索参数设置示例\label{fig:ch.univ.tune}}
+\end{figure}

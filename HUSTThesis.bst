@@ -270,15 +270,15 @@ INTEGERS { nameptr namesleft numnames }
 FUNCTION {bbl.etal}
 { "et~al." }
 
-FUNCTION {bbl.cn.etal}
-{ "等." }
-
 FUNCTION {format.lang}
 { lang empty$
-    'skip$
-    'skip$
-  if$
- }
+  'skip$
+  'skip$
+if$
+}
+
+FUNCTION {bbl.cn.etal}
+{ "等." }
 
 FUNCTION {format.names}
 { 's :=
@@ -316,7 +316,7 @@ FUNCTION {format.names}
                   lang empty$
                     { ", " * bbl.etal * }
                     { lang "chinese" =
-                       { "" * bbl.cn.etal * }
+                       { ", " * bbl.cn.etal * }
                        'skip$
                       if$
                     }
@@ -531,9 +531,9 @@ FUNCTION {format.pages}
     { "" }
     { pages multi.page.check
     {  lang empty$
-         {":" pages n.dashify tie.or.space.connect }
+         {": " pages n.dashify tie.or.space.connect }
          { lang "chinese" = 
-         { ":" pages n.dashify tie.or.space.connect }
+         { ": " pages n.dashify tie.or.space.connect }
          'skip$
          if$
          }
@@ -560,7 +560,7 @@ FUNCTION {format.vol.num.pages}
     'skip$
     { duplicate$ empty$
     { pop$ format.pages }
-    { ":" * pages n.dashify * }
+    { ": " * pages n.dashify * }
       if$
     }
   if$
@@ -581,7 +581,7 @@ FUNCTION {format.year.chapter.pages}
     'skip$
     { duplicate$ empty$
     { pop$ format.pages }
-    { ":" * pages n.dashify * }
+    { ": " * pages n.dashify * }
       if$
     }
   if$
@@ -999,8 +999,8 @@ FUNCTION {manual}
 
 FUNCTION {masterthesis.type}
 { lang empty$
-    { "[Master Thesis]" }
     { "[硕士学位论文]" }
+    { "[Master Thesis]" }
   if$
 }
 
@@ -1036,8 +1036,8 @@ FUNCTION {misc}
 
 FUNCTION {phdthesis.type}
 { lang empty$
-    { "[PhD Dissertation]" }
     { "[博士学位论文]" }
+    { "[PhD Dissertation]" }
   if$ 
 }
 
