@@ -61,12 +61,15 @@ In this version, a mini example of the HUST thesis is provided. Compared with th
 
     3. Many updates to `HUSTthesis.cls`, `HUSTtils.sty`, and `HUSTThesis.bst`
 
+    4. A template of workspace settings with `LaTex Workshop` extension in VSCode is provided in `.vscode/settings.json`. Under this configuration, the thesis pdf file will be automatically compiled with each saving action, and the aux. files will also be automatically cleaned.
+
+
 In the future, the version with a postfix 'x' denotes the branch modified by Xinze, which may be different with the version published by Dr. Li Lianghao. Users can compare different versions for reference. 
-Over the next three years, as the post-doctoral period of Xinze in HUST, this branch will be updated irregularly.
+Over the next three years (2024~2027), as the post-doctoral period of Xinze in HUST, this branch will be updated irregularly.
 
 Best wishes to all Ph.D candidates.
 
- by Xinze Zhang (xinze@hust.edu.cn)
+ by Zhang Xinze (xinze@hust.edu.cn)
 
 ---
 
