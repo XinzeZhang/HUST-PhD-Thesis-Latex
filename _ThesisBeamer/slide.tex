@@ -1,0 +1,155 @@
+% \documentclass[aspectratio=169,draft]{beamer}
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\usepackage[T1]{fontenc}
+% \usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{newunicodechar}
+\newunicodechar{±}{$\pm$}
+% \usepackage[frenchb]{babel}
+% \usepackage[ngerman]{babel}
+\newcommand\Mark[1]{\textsuperscript{#1}}
+
+% DOCUMENT INFORMATIONS: TITLE, AUTHOR, DATE, INSTITUTE
+
+% \email{xinze@hust.edu.cn}
+\titlegraphic{\includegraphics[scale=0.1]{./float/hust-logo.png}} % logo on titlepage only
+
+% PACKAGES
+\usetheme{BFH} % use BFH theme
+\usepackage{color}
+\usepackage{listings}
+\usepackage{hyperref} % links
+\usepackage{ragged2e} % justify format
+\usepackage{mathrsfs} % math font
+
+
+\usepackage{graphicx}
+
+
+\usepackage{tablefootnote}
+\usepackage{scalerel} % added for scale font in math
+
+
+\DeclareMathOperator*{\random}{random\llap{\phantom{arg}}}
+% \newtheorem{definition}{Definition}
+% \newcommand*{\definitionautorefname}{Definition}
+
+\usepackage{xspace} % added for declare robust command
+
+
+\usepackage{tabularx}
+\usepackage{CJKutf8}
+\usepackage{ragged2e}
+
+
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\newcommand\cn[1]{\fontsize{9}{9} \begin{CJK*}{UTF8}{gbsn}{ #1}\end{CJK*}}
+% \newcommand\comment[1]{\fontsize{10}{10} \textit{\color{red!75!black} #1}}
+\newcommand\comment[1]{\fontsize{10}{10} \textit{#1}}
+\newcommand\reftag[1]{\fontsize{10}{10} {#1}}
+
+
+
+\usepackage{csquotes}
+% \usepackage[style=verbose-ibid,backend=bibtex,citestyle=authoryear]{biblatex}
+% \bibliography{anthology.bib}
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
+\usepackage{amsmath,bm,mathtools,times}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+% \DeclareMathOperator{\trans}{\mathrm{T}}
+\DeclareMathOperator*{\avg}{Avg}
+\newcommand*\abs[1]{\left \lvert#1 \right \rvert}
+\newcommand*\norm[1]{\left \lVert #1 \right \rVert}
+\newcommand\trans{\mathrm{T}}
+\newcommand\x{\bm{x}}
+\newcommand\y{\bm{y}}
+\newcommand\e{\bm{e}}
+\newcommand\h{\bm{h}}
+\newcommand\w{\bm{w}}
+\newcommand\g{\bm{g}}
+\newcommand\m{\bm{m}}
+\newcommand\bs{\bm{s}}
+\newcommand\bp{\bm{p}}
+\newcommand\brho{\bm{\rho}}
+\newcommand\bv{\bm{v}}
+\newcommand\bu{\bm{u}}
+\newcommand\mathr{\mathbb{R}}
+\newcommand\mathd{\mathbb{D}}
+% \usepackage{breqn}
+
+\newcommand\ph{$\phantom{1}$} 
+\newcommand\s{$^\star$}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\usepackage{algorithm, algorithmic}
+
+\newlength{\twosubht}
+\newsavebox{\twosubbox}
+
+\usepackage{pgfpages}
+
+% \setbeameroption{show notes on second screen}
+
+
+\title{基于随机映射的时间序列深度学习预测建模技术及其应用研究}
+% \subtitle{Biography \& Research Interests}
+% \subtitle{ }
+\author[Xinze]{张心泽}
+\date{April 26, 2023}
+\institute[HUST]{
+{\fontsize{9pt}{12pt}\selectfont School of Management,\\}
+\vspace{0.75em}
+{\fontsize{10pt}{12pt}\selectfont Huazhong University of Science and Technology}\\}
+
+\begin{document}
+\maketitle
+
+\input{body/intro.tex}
+\input{body/related.tex}
+\input{body/cnn.tex}
+% \input{body/esn.tex}
+% \input{body/dfs.tex}
+% \input{body/eto.tex}
+\input{body/code.tex} 
+\input{body/last.tex}    
+
+% \input{1.inro.tex}
+% \input{2.cnn.tex}
+% \input{3.esn.tex}
+% \input{5.dfs.tex}
+% \input{4.eto.tex}
+% % \input{6.univ.tex}
+% \input{7.last.tex}
+% \begin{frame}
+%   \frametitle{谢谢各位评委老师!}
+%   \centering
+%   \includegraphics[width=1\textwidth]{fig/aboutme.png}
+
+% \end{frame}
+
+\end{document}

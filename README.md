@@ -1,6 +1,6 @@
 # HUST-PhD-Thesis-Latex
 
-HUSTThesis.cls 2021/09/16 version V3.1.1x
+HUSTThesis.cls 2024/01/29 version V3.1.1x
 
 This is the unofficial LaTeX class for Master/Ph.D. Thesis Template of Huazhong University of Science and Technology.  'x' denotes the branch modified by Xinze Zhang.
 
@@ -20,6 +20,10 @@ lianghao1993@hust.edu.cn
 linjqcn@gmail.com
 xinze@hust.edu.cn
 
+---
+_ThesisBeamer/beamerthemeBFH.sty 2024/01/29 version V1.0.x
+Contributors: Xinze Zhang (2024 V1.0.x)
+Copyright (C) 2024 by Xinze Zhang <xinze@hust.edu.cn>
 ---
 
 目前学校对于博士、硕士学位论文的撰写规定文件主要有3个：
@@ -62,6 +66,8 @@ In this version, a mini example of the HUST thesis is provided. Compared with th
     3. Many updates to `HUSTthesis.cls`, `HUSTtils.sty`, and `HUSTThesis.bst`
 
     4. A template of workspace settings with `LaTex Workshop` extension in VSCode is provided in `.vscode/settings.json`. Under this configuration, the thesis pdf file will be automatically compiled with each saving action, and the aux. files will also be automatically cleaned.
+
+    5. A beamer template is provided in '_ThesisBeamer/'. To use the template, configuring the folder of '_ThesisBeamer/' as the project folder, and the main file is 'slice.tex'. Besides, the corresponding workspace settings with `LaTex Workshop` extension in VSCode is provided in `_ThesisBeamer/.vscode/settings.json`. Note that, you may need to modfiy the font settings in the `_ThesisBeamer/beamerthemeBFH.sty` to make it working properly.
 
 
 In the future, the version with a postfix 'x' denotes the branch modified by Xinze, which may be different with the version published by Dr. Li Lianghao. Users can compare different versions for reference. 

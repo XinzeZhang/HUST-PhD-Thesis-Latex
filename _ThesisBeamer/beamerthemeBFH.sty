@@ -1,0 +1,394 @@
+\mode<presentation>
+
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+
+\RequirePackage{hyperref}
+\captionsetup{figurename = 图}
+
+\renewcommand\indexname{索引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\newcommand\equname{式}
+\def\figureautorefname{图}%
+\def\tableautorefname{表}%
+\def\equationautorefname{公式}
+
+\def\thefigure{\@arabic\c@figure}
+\def\fnum@figure{\figurename~\thefigure}
+\def\thetable{\@arabic\c@table}
+\def\fnum@table{\tablename~\thetable}
+
+
+
+% Requirement
+\RequirePackage{tikz}
+
+% Settings
+\defbeamertemplate*{title page}{BFH}{
+	% % \vspace*{5mm}
+	% \begin{flushright}
+	% 	\includegraphics[height=15mm]{./images/hust-logo.png}\par
+	% \end{flushright}
+	% % \vspace*{5mm}
+
+\vspace{4em}
+
+% \begin{beamercolorbox}[wd=\paperwidth,ht=.4ex]{upper separation line head}
+% \end{beamercolorbox}%
+
+\nointerlineskip
+\begin{beamercolorbox}[wd=\paperwidth,ht=5em,dp=0em,center]{title}
+	\vbox to 5em{
+		\vfil
+		\vspace{1ex}
+		\usebeamerfont{title}\strut\inserttitle\strut\par
+		% \usebeamerfont{subtitle}\insertsubtitle\par
+		\vfil
+	}
+
+\end{beamercolorbox}
+% \begin{beamercolorbox}[wd=\paperwidth,center]{title}
+% 	\usebeamerfont{subtitle}\insertsubtitle\par
+% \end{beamercolorbox}
+\nointerlineskip
+
+% \begin{beamercolorbox}[wd=\paperwidth,ht=.4ex]{lower separation line head}
+% \end{beamercolorbox}%
+
+\begin{center}
+	\usebeamerfont{author}\insertauthor\par
+	\vspace{1ex}
+	\usebeamerfont{institute}\insertinstitute\par
+	\vspace{2ex}
+	% \usebeamerfont{institute}\insertemail\par
+	\vspace{1ex}
+	\usebeamerfont{institute}\insertdate\par
+	% \vspace{2ex}
+	% \vspace{1ex}
+
+	\inserttitlegraphic\par
+\end{center}
+}
+
+\setbeamertemplate{section in toc}[square]
+
+
+% \useoutertheme{BFH}
+\addtobeamertemplate{frametitle}{}{
+\nointerlineskip%
+\begin{beamercolorbox}[wd=\paperwidth,colsep=1pt]{upper separation line head}%
+\end{beamercolorbox}
+}
+
+\defbeamertemplate*{footline}{BFH}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.33333333\paperwidth,ht=2.25ex,dp=1ex,leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+\usebeamerfont{author in head/foot}\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.3333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortinstitute
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.3333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} 
+/ \inserttotalframenumber
+\hspace*{2ex}
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+
+%\defbeamertemplate*{headline}{BFH}{
+%	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+%		leftskip=.3cm,rightskip=.3cm plus1fil,center]{frametitle}
+%	\usebeamerfont{frametitle}%
+%	\end{beamercolorbox}%
+%	\begin{beamercolorbox}[colsep=1pt]{lower separation line head}
+%	\end{beamercolorbox}
+%}
+%
+% \setbeamertemplate{footline}[frame number]{}
+% \setbeamertemplate{navigation symbols}{}
+% \setbeamertemplate{footline}{}
+%
+%\defbeamertemplate*{footline}{BFH}
+%{%
+%	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+%			leftskip=.3cm,rightskip=.3cm plus1fil,center]{title in head/foot}%
+%		\usebeamerfont{title in head/foot}%
+%		Universität Stuttgart\hfill\insertshortinstitute\hfill%
+%	\end{beamercolorbox}%
+%	\begin{beamercolorbox}[colsep=2pt]{middle separation line foot}
+%	\end{beamercolorbox}
+%	\begin{beamercolorbox}[ht=2pt]{title in head/foot}%
+%	\end{beamercolorbox}%
+%}
+
+
+
+
+% \usefonttheme{BFH}
+
+
+% \usepackage{luatexja-fontspec}
+% 英文字体
+% \setmainfont[BoldFont = Source Serif Pro Bold]{Source Serif Pro}
+% \setsansfont{Source Sans Pro}
+% \setmonofont{Source Code Pro}
+% \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+% % 中文字体
+% \setmainjfont[
+% 	BoldFont={AdobeHeitiStd-Regular},
+% 	ItalicFont={AdobeKaitiStd-Regular}]{AdobeKaitiStd-Regular}
+% \setsansjfont{AdobeKaitiStd-Regular}
+% \defaultjfontfeatures{JFM=kaiming}
+
+\RequirePackage{xeCJK}
+\setCJKmainfont[AutoFakeBold = {2.25},ItalicFont={AdobeKaitiStd-Regular}]{AdobeKaitiStd-Regular}
+\setCJKsansfont{AdobeKaitiStd-Regular}
+\setCJKmonofont{AdobeFangsongStd-Regular}
+% \setmainfont[BoldFont = Source Serif Pro Bold]{Source Serif Pro}
+% \setmainfont{Times New Roman}
+\setsansfont{Source Sans Pro}
+\setmainfont{Source Code Pro for Powerline}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+
+\newcommand\ziju[2]{\vbox{\ltjsetparameter{kanjiskip=#1} #2}}
+\newfontfamily\HEI{AdobeHeitiStd-Regular}
+\newfontfamily\KAI{AdobeKaitiStd-Regular}
+\newfontfamily\FANGSONG{AdobeFangsongStd-Regular}
+\newcommand{\hei}[1]{{\fontspec{AdobeHeitiStd-Regular} #1}}
+\newcommand{\kai}[1]{{\fontspec{AdobeKaitiStd-Regular} #1}}
+\newcommand{\fangsong}[1]{{\fontspec{AdobeFangsongStd-Regular} #1}}
+	
+\usepackage[T1]{fontenc} 
+\usefonttheme{serif}
+	% \usecolortheme{BFH}
+	
+%%
+% COLOR DEFINITION
+%%
+\definecolor{BFHd}{RGB}{110,124,143} % BFH dark
+% \definecolor{BFHd}{RGB}{8,84,155} % BFH dark
+\definecolor{BFHl}{RGB}{192,189,190} % Hust - light grey
+% \definecolor{BFHl}{RGB}{50,113,172} % Hust - light blue
+% \definecolor{BFHl}{RGB}{8,84,155} % Hust - blue
+% \definecolor{black}{RGB}{0,0,0} % Text Color
+
+\definecolor{black}{HTML}{222222} % Text Color
+\definecolor{white}{RGB}{255,255,255} % Background Color
+
+\setbeamercolor{titlelike}{bg=BFHd,fg=white}
+\setbeamercolor{structure}{fg=BFHd}
+\setbeamercolor{separation line}{bg=BFHl}
+
+\setbeamercolor{subsection in toc}{fg=BFHd}
+
+\setbeamercolor{footline}{bg=BFHd,fg=white}
+\setbeamercolor{author in head/foot}{bg=BFHd,fg=white}
+\setbeamercolor{title in head/foot}{bg=BFHd,fg=white}
+\setbeamercolor{date in head/foot}{bg=BFHd,fg=white}
+
+
+
+
+\setbeamertemplate{frametitle}[BFH]
+\setbeamertemplate{part page}[BFH]
+\setbeamertemplate{title page}[BFH]
+\setbeamertemplate{navigation symbols}{}
+
+% \setbeamertemplate{itemize item}{\usebeamerfont*{itemize item}\raise1.25pt\hbox{\donotcoloroutermaths$\bullet$}}
+
+\setlength{\parskip}{0.5em}
+
+% \setbeamercolor{itemize item}{fg=BFHl}
+% \setbeamercolor{itemize subitem}{fg=BFHl}
+% \setbeamercolor{itemize subsubitem}{fg=BFHl}
+
+\usepackage{enumitem}
+\setlistdepth{9}
+
+\setlist[itemize,1]{label=\color{BFHl}{$\bullet$}}
+\setlist[itemize,2]{label=\color{BFHl}{$\circ$}}
+\setlist[itemize,3]{label=\color{BFHl}{$\diamond $}}
+\setlist[itemize,4]{label=\color{BFHl}{$\bullet$}}
+\setlist[itemize,5]{label=$\bullet$}
+\setlist[itemize,6]{label=$\bullet$}
+\setlist[itemize,7]{label=$\bullet$}
+\setlist[itemize,8]{label=$\bullet$}
+\setlist[itemize,9]{label=$\bullet$}
+
+
+
+%-------------------------------------------------------------------------------
+%                Configuration for colors
+%-------------------------------------------------------------------------------
+% Gray-scale colors
+% \definecolor{white}{HTML}{FFFFFF}
+% \definecolor{black}{HTML}{000000}
+\definecolor{darkgray}{HTML}{333333}
+\definecolor{gray}{HTML}{5D5D5D}
+\definecolor{lightgray}{HTML}{999999}
+% Basic colors
+\definecolor{green}{HTML}{C2E15F}
+\definecolor{orange}{HTML}{FDA333}
+\definecolor{purple}{HTML}{D3A4F9}
+\definecolor{red}{HTML}{FB4485}
+\definecolor{blue}{HTML}{6CE0F1}
+% Text colors
+\definecolor{darktext}{HTML}{414141}
+\colorlet{text}{darkgray}
+\definecolor{graytext}{HTML}{5D5D5D}
+\colorlet{lighttext}{lightgray}
+% Awesome colors
+\definecolor{awesome-emerald}{HTML}{00A388}
+\definecolor{awesome-skyblue}{HTML}{0395DE}
+\definecolor{awesome-red}{HTML}{DC3522}
+\definecolor{awesome-pink}{HTML}{EF4089}
+\definecolor{awesome-orange}{HTML}{FF6138}
+\definecolor{awesome-nephritis}{HTML}{27AE60}
+\definecolor{awesome-concrete}{HTML}{95A5A6}
+\definecolor{awesome-darknight}{HTML}{131A28}
+\colorlet{awesome}{awesome-red}
+% For elements of entry
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\KAI\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{12pt}{1em}\KAI\color{darktext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{12pt}{1em}\KAI\color{darktext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{12pt}{1em}\KAI\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\KAI\color{text} #1}}
+\newcommand*{\des}[1]{{\fontsize{9pt}{1em}\KAI\color{text} #1}}
+% For elements of subentry
+\newcommand*{\subentrytitlestyle}[1]{{\fontsize{10pt}{1em}\KAI\slshape\color{darktext} #1}}
+% \newcommand*{\subentrytitlestyle}[1]{{\fontsize{9pt}{1em}\KAI\normalfont\color{darktext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\fontsize{12pt}{1em}\KAI\scshape\color{graytext} #1}}
+\newcommand*{\subentrydatestyle}[1]{{\fontsize{10pt}{1em}\color{graytext} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\fontsize{12pt}{1em}\KAI\upshape\color{awesome} #1}}
+\newcommand*{\subdescriptionstyle}[1]{{\fontsize{10pt}{1em}\KAI\itshape\color{text} #1}}
+
+% For elements of honor
+\newcommand*{\honortitlestyle}[1]{{\fontsize{10pt}{1em}\KAI\itshape\color{graytext} #1}}
+\newcommand*{\honorpositionstyle}[1]{{\fontsize{10pt}{1em}\HEI\bfseries\color{darktext} #1}}
+\newcommand*{\honordatestyle}[1]{{\fontsize{10pt}{1em}\KAI\color{graytext} #1}}
+\newcommand*{\honorlocationstyle}[1]{{\fontsize{10pt}{1em}\KAI\upshape\color{darktext} #1}}
+
+% For elements of skill
+\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bfseries\color{darktext} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{10pt}{1em}\color{text} #1}}
+
+% Define an entry of cv Education
+% Usage: \cveducation{<title>}{<location>}
+\newcommand*{\cveducation}[2]{%
+  \vspace{-2.0mm}
+%   \setlength\tabcolsep{0pt}
+%   \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
+    \entrytitlestyle{#1} & \entrylocationstyle{#2} \\
+  \end{tabular*}%
+}
+
+\newcommand*{\cvsubeducation}[2]{%
+  \vspace{-2.0mm}
+%   \setlength\tabcolsep{0pt}
+%   \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
+    \subentrytitlestyle{#1} & \subentrydatestyle{#2} \\
+  \end{tabular*}%
+}
+
+% Define an entry of cv experience
+% Usage: \cvexperience{<title>}{<date>}{<description>}
+\newcommand*{\cvexperience}[2]{%
+  \vspace{-2.0mm}
+%   \setlength\tabcolsep{0pt}
+%   \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
+    \entrytitlestyle{#1} & \subentrydatestyle{#2} \\
+  \end{tabular*}%
+}
+
+
+% Define an environment for cvhonor
+\newenvironment{cvhonors}{%
+  \begin{center}
+    % \setlength\tabcolsep{0pt}
+    % \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{cl@{\extracolsep{\fill}}r}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+
+% Define a line of cv information(honor, award or something else)
+% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
+\newcommand*{\cvhonor}[4]{%
+  \vspace{1.0mm}
+  \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
+}
+
+% Define an environment for cvskill
+\newenvironment{cvskills}{%
+  \begin{center}
+    % \setlength\tabcolsep{1ex}
+    % \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rl}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv information(skill)
+% Usage: \cvskill{<type>}{<skillset>}
+\newcommand*{\cvskill}[2]{%
+	\skilltypestyle{#1} & \skillsetstyle{#2} \\
+}
+
+% Define an environment for cventry
+\newenvironment{cventries}{%
+  \begin{center}
+}{%
+  \end{center}
+}
+
+\newcommand*{\cvpapers}[1]{%
+  \vspace{-3.0mm}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#1}}
+  \end{tabular*}%
+}
+
+
+% Define an environment for cvitems(for cventry)
+\newenvironment{cvitems}{%
+  \vspace{-3.0mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=2ex,topsep=1ex,itemsep=0.5ex]
+    \begin{normalsize}
+    % \setlength{\topsep}{2pt}
+    \renewcommand{\labelitemi}{\bullet}
+    \end{normalsize}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{-4.0mm}
+}
+
+% \newcommand*{\cvfunding}[1]{%
+%   \vspace{2.5mm}
+%   \setlength\tabcolsep{0pt}
+%   \setlength{\extrarowheight}{0pt}
+%   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+%     \entrytitlestyle{#1} &  \\
+%     % \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#2}}
+%   \end{tabular*}%
+% }
+% \newcommand*{\cvsubfunding}[2]{%
+% \vspace{-3.0mm}
+% \setlength\tabcolsep{0pt}
+% \setlength{\extrarowheight}{0pt}
+% \begin{tabular*}{\textwidth - 5.5ex}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm - 1em} R{4.5cm}}
+%   \descriptionstyle{#1} & \descriptionstyle{#2} 
+% \end{tabular*}%
+% }
+
+\mode<all>
