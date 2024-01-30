@@ -100,69 +100,49 @@
 \vskip0pt%
 }
 
-%\defbeamertemplate*{headline}{BFH}{
-%	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
-%		leftskip=.3cm,rightskip=.3cm plus1fil,center]{frametitle}
-%	\usebeamerfont{frametitle}%
-%	\end{beamercolorbox}%
-%	\begin{beamercolorbox}[colsep=1pt]{lower separation line head}
-%	\end{beamercolorbox}
-%}
-%
-% \setbeamertemplate{footline}[frame number]{}
-% \setbeamertemplate{navigation symbols}{}
-% \setbeamertemplate{footline}{}
-%
-%\defbeamertemplate*{footline}{BFH}
-%{%
-%	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
-%			leftskip=.3cm,rightskip=.3cm plus1fil,center]{title in head/foot}%
-%		\usebeamerfont{title in head/foot}%
-%		Universität Stuttgart\hfill\insertshortinstitute\hfill%
-%	\end{beamercolorbox}%
-%	\begin{beamercolorbox}[colsep=2pt]{middle separation line foot}
-%	\end{beamercolorbox}
-%	\begin{beamercolorbox}[ht=2pt]{title in head/foot}%
-%	\end{beamercolorbox}%
-%}
-
-
-
-
-% \usefonttheme{BFH}
-
-
-% \usepackage{luatexja-fontspec}
-% 英文字体
-% \setmainfont[BoldFont = Source Serif Pro Bold]{Source Serif Pro}
-% \setsansfont{Source Sans Pro}
-% \setmonofont{Source Code Pro}
-% \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-% % 中文字体
-% \setmainjfont[
-% 	BoldFont={AdobeHeitiStd-Regular},
-% 	ItalicFont={AdobeKaitiStd-Regular}]{AdobeKaitiStd-Regular}
-% \setsansjfont{AdobeKaitiStd-Regular}
-% \defaultjfontfeatures{JFM=kaiming}
-
 \RequirePackage{xeCJK}
-\setCJKmainfont[AutoFakeBold = {2.25},ItalicFont={AdobeKaitiStd-Regular}]{AdobeKaitiStd-Regular}
-\setCJKsansfont{AdobeKaitiStd-Regular}
-\setCJKmonofont{AdobeFangsongStd-Regular}
-% \setmainfont[BoldFont = Source Serif Pro Bold]{Source Serif Pro}
-% \setmainfont{Times New Roman}
-\setsansfont{Source Sans Pro}
-\setmainfont{Source Code Pro for Powerline}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-
 \newcommand\ziju[2]{\vbox{\ltjsetparameter{kanjiskip=#1} #2}}
-\newfontfamily\HEI{AdobeHeitiStd-Regular}
-\newfontfamily\KAI{AdobeKaitiStd-Regular}
-\newfontfamily\FANGSONG{AdobeFangsongStd-Regular}
-\newcommand{\hei}[1]{{\fontspec{AdobeHeitiStd-Regular} #1}}
-\newcommand{\kai}[1]{{\fontspec{AdobeKaitiStd-Regular} #1}}
-\newcommand{\fangsong}[1]{{\fontspec{AdobeFangsongStd-Regular} #1}}
-	
+%%  ----------
+%%  You can change the font with any font you like if the font is installed in your system
+%%  Else, use the font in the supply folder as the main font. 
+%%  ----------------------------------------
+%%  The following provided a font settings with installed fonts.
+% \setCJKmainfont[AutoFakeBold = {2.25},ItalicFont={AdobeKaitiStd-Regular}]{AdobeKaitiStd-Regular}
+% \setCJKsansfont{AdobeKaitiStd-Regular}
+% \setCJKmonofont{AdobeFangsongStd-Regular}
+% \setsansfont{Source Sans Pro}
+% \setmainfont{Source Code Pro for Powerline}
+
+% \newfontfamily\HEI{AdobeHeitiStd-Regular}
+% \newfontfamily\KAI{AdobeKaitiStd-Regular}
+% \newfontfamily\FANGSONG{AdobeFangsongStd-Regular}
+% \newcommand{\hei}[1]{{\fontspec{AdobeHeitiStd-Regular} #1}}
+% \newcommand{\kai}[1]{{\fontspec{AdobeKaitiStd-Regular} #1}}
+% \newcommand{\fangsong}[1]{{\fontspec{AdobeFangsongStd-Regular} #1}}
+
+% ----------------------------------------
+% The following provided a font settings with uninstalled fonts.
+\setCJKmainfont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimSun.ttf}
+\setCJKsansfont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{SimHei.ttf}
+\setCJKmonofont[Path=supply/font/,AutoFakeBold = {2.25},ItalicFont={simkai.ttf}]{STZhongsong.ttf}
+\setmainfont{Times New Roman}
+% \RequirePackage{mathptmx}
+% \RequirePackage{courier}
+% \RequirePackage{bm}
+
+\setCJKfamilyfont{hei}[Path=supply/font/,AutoFakeBold = {2.25}]{SimHei.ttf}
+\setCJKfamilyfont{kai}[Path=supply/font/,AutoFakeBold = {2.25}]{simkai.ttf}
+\setCJKfamilyfont{fs}[Path=supply/font/,AutoFakeBold = {2.25}]{simfang.ttf}
+
+\newcommand{\fangsong}{\CJKfamily{fs}}        % 仿宋体
+\let\FANGSONG\fs
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\let\KAI\kai
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\let\HEI\hei
+
+
 \usepackage[T1]{fontenc} 
 \usefonttheme{serif}
 	% \usecolortheme{BFH}
