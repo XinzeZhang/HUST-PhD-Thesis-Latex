@@ -60,7 +60,7 @@ mathtimes, mathCMR
 
 01/2024 
 
-Thesis V3.1.1x changes:
+Thesis V3.1.2x changes:
 
 In this version, a mini example of the HUST thesis is provided. Compared with the older version, there are many improvements. Main modifications are summarized as follows:
 

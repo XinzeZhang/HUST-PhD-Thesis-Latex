@@ -1,0 +1,23 @@
+\begin{table*}[!t]
+    \centering
+    \footnotesize
+    \caption{神经网络模型在AR1、BTC和ILI数据集上的单次平均建模时间（s） \label{tab:time}}
+    \resizebox{\textwidth}{!}{\begin{tabular}{ccrrrrrrrrr}
+        \toprule
+        \multirow{2}{*}{建模方法}   & \multirow{2}{*}{模型} & \multicolumn{3}{c}{AR1} & \multicolumn{3}{c}{BTC} & \multicolumn{3}{c}{ILI}                                           \\\cmidrule(lr){3-5} \cmidrule(lr){6-8}\cmidrule(lr){9-11}
+                          &                         & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{6} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{6} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{8} \\ \midrule        
+        
+\multirow{3}{*}{梯度下降} & GS-CNN                  & 74.65                 & 76.95                 & 78.55                 & 93.70                 & 96.45                 & 99.40                 & 67.05                 & 70.25                 & 73.00                 \\
+                          & DeepAR                  & 225.25                & 238.95                & 257.70                & 223.75                & 251.10                & 268.65                & 256.80                & 279.10                & 275.30                \\
+                          & CLSTM                   & 150.45                & 154.80                & 160.25                & 143.00                & 141.50                & 142.25                & 167.40                & 170.80                & 175.30                \\
+\specialrule{0em}{1.5pt}{1.5pt}                          
+\multirow{3}{*}{随机映射}   & RVFL                    & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-}  & \multicolumn{1}{c}{-}  & \multicolumn{1}{c}{-}  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} \\
+                          & IELM                    & 2.65                  & 2.85                  & 2.80                  & 3.40                  & 3.30                  & 3.20                  & 2.55                  & 2.55                  & 2.40                  \\
+                          & SCN                     & 22.85                 & 57.40                 & 107.75                & 21.10                 & 58.00                 & 111.40                & 16.10                 & 49.60                 & 90.95                 \\
+\specialrule{0em}{1.5pt}{1.5pt}                          
+\multirow{2}{*}{消融方法} & Stoc-CNN                & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-}  & \multicolumn{1}{c}{-}  & \multicolumn{1}{c}{-}  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} \\
+                          & ES-CNN                  & 6.50                  & 6.40                  & 6.50                  & 6.35                  & 6.50                  & 6.45                  & 6.45                  & 6.50                  & 6.50                  \\
+\specialrule{0em}{1.5pt}{1.5pt}                          
+所提方法                       & ESM-CNN                 & 9.65                  & 9.65                  & 9.70                  & 7.10                  & 7.25                  & 7.25                  & 7.15                  & 7.15                  & 7.20                  \\ \bottomrule
+    \end{tabular}}
+\end{table*}
