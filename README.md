@@ -4,7 +4,7 @@ HUSTThesis.cls 2024/01/29 version V3.1.1x
 
 This is the unofficial LaTeX class for Master/Ph.D. Thesis Template of Huazhong University of Science and Technology.  'x' denotes the branch modified by Xinze Zhang.
 
-Contributors: Xinze Zhang (2024 V3.1.1x), Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0).
+Contributors: Xinze Zhang (2024 V3.1.2x), Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0).
 
 Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
 
@@ -21,6 +21,7 @@ linjqcn@gmail.com
 xinze@hust.edu.cn
 
 ---
+
 _ThesisBeamer/beamerthemeBFH.sty 2024/01/31 version V1.1.1x
 
 Contributors: Xinze Zhang (2024 V1.1x)
@@ -58,7 +59,7 @@ mathtimes, mathCMR
 
 ---
 
-01/2024 
+01/2024
 
 Thesis V3.1.2x changes:
 
@@ -66,11 +67,11 @@ In this version, a mini example of the HUST thesis is provided. Compared with th
 
     1. Reorganized the file structure.
 
-    2. Extract the table of the defence committee members from `HUSTthesis.cls` to `body/cover.tex`
+    2. Extract the table of the defence committee members from`HUSTthesis.cls` to `body/cover.tex`
 
-    3. Many updates to `HUSTthesis.cls`, `HUSTtils.sty`, and `HUSTThesis.bst`
+    3. Many updates to`HUSTthesis.cls`, `HUSTtils.sty`, and `HUSTThesis.bst`
 
-    4. A template of workspace settings with `LaTex Workshop` extension in VSCode is provided in `.vscode/settings.json`. Under this configuration, the thesis pdf file will be automatically compiled with each saving action, and the aux. files will also be automatically cleaned.
+    4. A template of workspace settings with`LaTex Workshop` extension in VSCode is provided in `.vscode/settings.json`. Under this configuration, the thesis pdf file will be automatically compiled with each saving action, and the aux. files will also be automatically cleaned.
 
 Beamer V1.1.1x changes:
 
@@ -78,9 +79,9 @@ Beamer V1.1.1x changes:
 
 Beamer V1.1.0x changes:
 
-    1. A beamer template is provided in '_ThesisBeamer/'. To use the template, configuring the folder of '_ThesisBeamer/' as the project folder, and the main file is 'slice.tex'. Besides, the corresponding workspace settings with `LaTex Workshop` extension in VSCode is provided in `_ThesisBeamer/.vscode/settings.json`.
+    1. A beamer template is provided in '_ThesisBeamer/'. To use the template, configuring the folder of '_ThesisBeamer/' as the project folder, and the main file is 'slice.tex'. Besides, the corresponding workspace settings with`LaTex Workshop` extension in VSCode is provided in `_ThesisBeamer/.vscode/settings.json`.
 
-In the future, the version with a postfix 'x' denotes the branch modified by Xinze, which may be different with the version published by Dr. Li Lianghao. Users can compare different versions for reference. 
+In the future, the version with a postfix 'x' denotes the branch modified by Xinze, which may be different with the version published by Dr. Li Lianghao. Users can compare different versions for reference.
 Over the next three years (2024~2027), as the post-doctoral period of Xinze in HUST, this branch will be updated irregularly.
 
 Best wishes to all Ph.D candidates.
