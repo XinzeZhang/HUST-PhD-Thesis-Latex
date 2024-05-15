@@ -890,7 +890,7 @@
     \setlength{\extrarowheight}{3pt}
     \begin{HUST@tabular}{p{4em}p{5em}p{\textwidth-18em}p{2em}p{12em}}
     \HUST@classno & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}} & \hfill &  \HUST@studentno & \makebox[0pt][l]{\rule[-2.0pt]{7em}{1pt}}{\hspace{1em}\HUST@xuehao} \tabularnewline 
-    \HUST@UDC & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}}{\hfill\HUST@schoolcode\hfill\hfill} & \hfill   &   \HUST@secrettitle & \makebox[0pt][l]{\rule[-2.0pt]{7em}{1pt}}{\hspace{1em}\HUST@miji} \tabularnewline
+    \HUST@UDC & \makebox[0pt][l]{\rule[-2.0pt]{5em}{1pt}}{\hfill\HUST@schoolcode\hfill\hfill} & \hfill   &   \HUST@secrettitle & \makebox[0pt][l]{\rule[-2.0pt]{7em}{1pt}}{\hspace{2.5em}\HUST@miji} \tabularnewline
     \end{HUST@tabular}
     \end{center}
     }
