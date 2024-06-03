@@ -231,10 +231,10 @@
 \def\thu@define@fontsize#1#2{%
   \expandafter\newcommand\csname #1\endcsname[1][\baselinestretch]{%
     \thu@choosefont{##1}{#2}}}
-\thu@define@fontsize{dachu}{53pt}
+\thu@define@fontsize{dachu}{45pt} %used for the cover 博士学位论文
 \thu@define@fontsize{chuhao}{42pt}
 \thu@define@fontsize{xiaochu}{36pt}
-\thu@define@fontsize{yihao}{28pt}
+\thu@define@fontsize{yihao}{26pt}
 \thu@define@fontsize{xiaoyi}{24pt}
 \thu@define@fontsize{erhao}{22pt}
 \thu@define@fontsize{xiaoer}{18pt}
