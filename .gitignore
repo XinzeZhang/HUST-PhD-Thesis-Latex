@@ -18,6 +18,7 @@
 *.cb2
 .*.lb
 main.pdf
+_ThesisBeamer/slide.pdf
 
 ## Intermediate documents:
 *.dvi
