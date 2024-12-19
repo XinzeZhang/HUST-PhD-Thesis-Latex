@@ -38,6 +38,11 @@ Copyright (C) 2024 by Xinze Zhang <xinze@hust.edu.cn>
 
 ---
 
+建议在本地安装texlive的最新版，华科校内可使用校内镜像站https://mirrors.hust.edu.cn/CTAN/systems/texlive/Images/。
+建议使用vscode编辑器+LaTex Workshop插件。模板已提供插件的配置文件`.vscode/settings.json`。
+
+---
+
 Available class options
 (e.g., \documentclass[draftformat,mathCMR]{HUSTthesis}
 
