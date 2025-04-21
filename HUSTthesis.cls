@@ -7,7 +7,7 @@
 %%
 %% Contributors:
 %% Feng Jiang (2005 V1.0), Huikan Liu (2006 V2.0), Xinze Zhang (2020 V3.0),
-%% Lianghao Li & Jianqing Lin (2021 V3.1)
+%% Lianghao Li & Jianqing Lin & lxysl & Xinze Zhang (2021 V3.1)
 %%
 %% Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
 %% Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
@@ -37,19 +37,14 @@
 %    页脚（页码），页脚修饰线（单线）。
 %    最终版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包含页脚。
 %
-%
-% mathtimes, mathCMR
-%    公式字体选项，mathtimes 选项让公式启用 Times Roman 字体，
-%    mathCMR 选项让公式启用 CM Roman 字体。
-%    目前学校尚未规定公式选用什么字体，推荐使用 CM Roman 字体，
-%    因为 Times Roman 数学字体不支持黑体。
-%    如果使用 Times Roman 字体，需加载 bm 宏包用于支持黑体（不推荐）。
-%
+
 %
 % arial
 %    打开选项启用 arial 字体，若无字体宏包，则默认采用 helvet 字体。
 %
 %*******
+% 04/2025
+% 
 % 03/2022 V3.1 changes:
 %    modify class file (HUSTthesis.cls):
 %    1. Update the defence committee page between Chinese and English cover
@@ -115,10 +110,11 @@
 \newif\ifHUST@arial
 \DeclareOption{arial}{\HUST@arialtrue}
 
+
 % 公式是否使用 Times Roman 字体
-\newif\ifHUST@mathtimes
-\DeclareOption{mathtimes}{\HUST@mathtimestrue}
-\DeclareOption{mathCMR}{\HUST@mathtimesfalse}
+\newif\ifHUST@blackhead
+\DeclareOption{blackhead}{\HUST@blackheadtrue}
+\DeclareOption{redhead}{\HUST@blackheadfalse}
 
 % draftformat 包含全部的页眉页脚，最终版本的页眉为空，页脚仅有页码
 \newif\ifHUST@finalformat
@@ -146,22 +142,21 @@
   \RequirePackage[scaled=0.92]{helvet}
 \fi
 
-% 若不想在公式环境中使用 Times Roman 字体而使用 Computer Modern Roman 字体，
-% 必须分别加载三种字族。
-% 另外为了消除警告，需要适当增加字体替代的警告忍受度
-\ifHUST@mathtimes
-  \RequirePackage{mathptmx}
-  \RequirePackage{courier}
-  \RequirePackage{bm}
-\else
-  \renewcommand{\sfdefault}{phv}
-  \renewcommand{\rmdefault}{ptm}
-  \renewcommand{\ttdefault}{pcr}
-  \def\fontsubfuzz{2.0pt}
-\fi
-
+% 默认使用 Times Roman 字体
 % 加载 AMSLaTeX 宏包，增加对数学环境的支持
-\RequirePackage{amsmath, amssymb}
+\RequirePackage{amsmath,amssymb,bm}
+% \ifHUST@mathtimes
+%   \RequirePackage{mathptmx}
+%   \RequirePackage{courier}
+%   \RequirePackage{bm}
+% \else
+%   \renewcommand{\sfdefault}{phv}
+%   \renewcommand{\rmdefault}{ptm}
+%   \renewcommand{\ttdefault}{pcr}
+%   \def\fontsubfuzz{2.0pt}
+% \fi
+
+
 
 % 加载图形宏包
 \RequirePackage{graphicx}
@@ -199,7 +194,7 @@
 \setCJKfamilyfont{kai}[Path=supply/font/,AutoFakeBold = {2.25}]{simkai.ttf}
 \setCJKfamilyfont{fs}[Path=supply/font/,AutoFakeBold = {2.25}]{simfang.ttf}
 
-
+\setmainfont{Times New Roman}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 重定义字体命令
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -255,6 +250,13 @@
 % \renewcommand\normalsize{\fontsize{12pt}{20pt}\selectfont}
 \renewcommand\normalsize{\fontsize{12pt}{23.1pt}\selectfont}
 \renewcommand\small{\fontsize{10.5pt}{17.5pt}\selectfont}
+
+
+%% 设置页面颜色值
+\RequirePackage{xcolor}
+\definecolor{headr}{RGB}{212,14,14}
+\definecolor{headb}{RGB}{0,0,0}
+
 
 % 加载此宏包以支持并排图形，打开 config 选项以兼容过时宏包
 % subfigure
@@ -782,9 +784,19 @@
     \def\@oddhead{%
       \vbox{%
         \parbox[b]{\textwidth}{\centering\sihao%
-          \ziju{0.81em} \kai \bfseries \sanhao[1] \textcolor[RGB]{212,14,14}{\HUST@schoolename\HUST@apply}}
+          \ziju{0.81em} \kai \bfseries \sanhao[1] 
+          \ifHUST@blackhead
+            \textcolor{headb} {\HUST@schoolename\HUST@apply}
+          \else
+          \textcolor{headr} {\HUST@schoolename\HUST@apply} \fi
+          }
         \vskip6pt
-        \hspace{-4mm} \vbox{\hspace{-3mm} \textcolor[RGB]{212,14,14}{\hrule width 1.04\textwidth height\headrulewidth depth0pt\vskip1pt \hrule width 1.04\textwidth height\headrulewidth}}}}\fi%
+        \hspace{-4mm} \vbox{\hspace{-3mm} 
+        \ifHUST@blackhead
+          \textcolor{headb}{\hrule width 1.04\textwidth height\headrulewidth depth0pt\vskip1pt \hrule width 1.04\textwidth height\headrulewidth}
+        \else
+          \textcolor{headr}{\hrule width 1.04\textwidth height\headrulewidth depth0pt\vskip1pt \hrule width 1.04\textwidth height\headrulewidth} \fi
+        }}}\fi%
     \let\@evenhead=\@oddhead
   \ifHUST@finalformat
    \def\@oddfoot{%
@@ -798,9 +810,14 @@
    \def\@oddfoot{%
      \hbox to \textwidth{%
      \hspace{-4mm}\vbox{%
-     \textcolor[RGB]{212,14,14}
+     \ifHUST@blackhead
+     \textcolor{headb}
       \footrule
-      \hfill \hspace{-4mm} \parbox[t]{\textwidth}{\hspace{10mm}\centering\wuhao\thepage\strut} \vspace{3mm}\hfill
+      \hfill \hspace{-4mm} \parbox[t]{\textwidth}{\hspace{10mm}\centering\wuhao\thepage\strut} \vspace{3mm}\hfill     
+     \else
+     \textcolor{headr}
+      \footrule
+      \hfill \hspace{-4mm} \parbox[t]{\textwidth}{\hspace{10mm}\centering\wuhao\thepage\strut} \vspace{3mm}\hfill \fi
       }}}
    \fi
   \let\@evenfoot=\@oddfoot}
@@ -857,6 +874,8 @@
 \def\cauthorname#1{\def\HUST@cauthorname{#1}}\def\HUST@cauthorname{}
 \def\csupervisoronename#1{\def\HUST@csupervisoronename{#1}}\def\HUST@csupervisoronename{}
 \def\csupervisortwoname#1{\def\HUST@csupervisortwoname{#1}}\def\HUST@csupervisortwoname{}
+\def\csupervisoronetitle#1{\def\HUST@csupervisoronetitle{#1}}\def\HUST@csupervisoronetitle{}
+\def\csupervisortwotitle#1{\def\HUST@csupervisortwotitle{#1}}\def\HUST@csupervisortwotitle{}
 \def\csupervisortitle#1{\def\HUST@csupervisortitle{#1}}\def\HUST@csupervisortitle{}
 \def\defencedate#1{\def\HUST@defencedate{#1}}\def\HUST@defencedate{}
 \def\grantdate#1{\def\HUST@grantdate{#1}}\def\HUST@grantdate{}
@@ -873,8 +892,8 @@
 \def\eauthor#1{\def\HUST@eauthor{#1}}\def\HUST@eauthor{}
 \def\esupervisorone#1{\def\HUST@esupervisorone{#1}}\def\HUST@esupervisorone{}
 \def\esupervisortwo#1{\def\HUST@esupervisortwo{#1}}\def\HUST@esupervisortwo{}
-\def\eassosupervisor#1{\def\HUST@eassosupervisor{#1}}\def\HUST@eassosupervisor{}
-\def\ecosupervisor#1{\def\HUST@ecosupervisor{~ & #1\\}}\def\HUST@ecosupervisor{}
+% \def\eassosupervisor#1{\def\HUST@eassosupervisor{#1}}\def\HUST@eassosupervisor{}
+% \def\ecosupervisor#1{\def\HUST@ecosupervisor{~ & #1\\}}\def\HUST@ecosupervisor{}
 \def\edate#1{\def\HUST@edate{#1}}\def\HUST@edate{}
 \newcommand{\tabincell}[2]{\begin{HUST@tabular}{@{}#1@{}}#2\end{HUST@tabular}}
 \long\def\eabstract#1{\long\def\HUST@eabstract{#1}}\long\def\HUST@eabstract{}
@@ -980,7 +999,7 @@
         Major & : & \HUST@esubject\\ \vspace{-0.3pt}\\
         Supervisor & : & \HUST@esupervisorone\\ \vspace{-0.3pt}\\
         \ifx\HUST@esupervisortwo\@empty
-          \fi
+          % \fi
         \else
          & & \HUST@esupervisortwo
         \fi

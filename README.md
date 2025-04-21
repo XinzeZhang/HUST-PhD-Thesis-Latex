@@ -1,10 +1,10 @@
 # HUST-PhD-Thesis-Latex
 
-HUSTThesis.cls 2024/01/29 version V3.1.1x
+HUSTThesis.cls 2025/04/22 version V3.1.3x
 
 This is the unofficial LaTeX class for Master/Ph.D. Thesis Template of Huazhong University of Science and Technology.  'x' denotes the branch modified by Xinze Zhang.
 
-Contributors: Xinze Zhang (2024 V3.1.2x), Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0).
+Contributors: Xinze Zhang, lxysl(2024 V3.1.3x), Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0).
 
 Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
 
@@ -44,7 +44,7 @@ Copyright (C) 2024 by Xinze Zhang <xinze@hust.edu.cn>
 ---
 
 Available class options
-(e.g., \documentclass[draftformat,mathCMR]{HUSTthesis}
+(e.g., \documentclass[draftformat,blackhead]{HUSTthesis}
 
     *** choose only one from each category ***
 
@@ -55,13 +55,22 @@ draftformat, finalformat
     页脚（页码），页脚修饰线（单线）。
     盲审版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包含页脚。
 
-mathtimes, mathCMR
-    公式字体选项，mathtimes 选项让公式启用 Times Roman 字体，
-    mathCMR 选项让公式启用 CM Roman 字体。
-    目前学校尚未规定公式选用什么字体，推荐使用 CM Roman 字体，
-    因为 Times Roman 数学字体不支持黑体。
-    如果使用 Times Roman 字体，需加载 bm 宏包用于支持黑体（不推荐）。
+blackhead, redhead
+    页眉颜色选项，blackhead选项让页眉为黑色，redhead为红色。
 
+---
+
+注意：遇到问题，如参考文献作者数量，建议先在closed issues中检索，可能已有回答。
+
+---
+
+04/2025
+
+Thesis V3.1.3x changes:
+
+1. Support two supervisors. The modification can also automatically support the default situation with only one supervisor. Thank [lxysl](https://github.com/lxysl).
+
+2. Now, the red header or black header can be configured in the main.tex
 ---
 
 01/2024

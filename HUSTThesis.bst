@@ -776,7 +776,7 @@ FUNCTION {format.year.pages}
     'skip$
     { duplicate$ empty$
     { pop$ format.pages }
-    { ". " * pages n.dashify * }
+    { ": " * pages n.dashify * }
       if$
     }
   if$
@@ -913,6 +913,22 @@ FUNCTION {inproceedings}
   if$
   new.block
   note output  
+  fin.entry
+}
+
+FUNCTION {techreport}
+{ output.bibitem
+  format.authors "author" output.check
+  new.block
+  format.title "title" output.check
+  new.block
+  % format.tr.number output.nonnull
+  institution "institution" output.check
+  address output
+  format.year.pages output
+  format.url output
+  new.block
+  note output
   fin.entry
 }
 
@@ -1091,21 +1107,7 @@ FUNCTION {proceedings}
   fin.entry
 }
 
-FUNCTION {techreport}
-{ output.bibitem
-  format.authors "author" output.check
-  new.block
-  format.title "title" output.check
-  new.block
-  format.tr.number output.nonnull
-  institution "institution" output.check
-  address output
-  format.date "year" output.check
-  format.url output
-  new.block
-  note output
-  fin.entry
-}
+
 
 FUNCTION {patent} { output.bibitem
   format.authors "author" output.check
