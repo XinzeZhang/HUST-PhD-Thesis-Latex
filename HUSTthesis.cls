@@ -855,7 +855,8 @@
 \def\cdegree#1{\def\HUST@cdegree{#1}}\def\HUST@cdegree{}
 \def\csubjectname#1{\def\HUST@csubjectname{#1}}\def\HUST@csubjectname{}
 \def\cauthorname#1{\def\HUST@cauthorname{#1}}\def\HUST@cauthorname{}
-\def\csupervisorname#1{\def\HUST@csupervisorname{#1}}\def\HUST@csupervisorname{}
+\def\csupervisoronename#1{\def\HUST@csupervisoronename{#1}}\def\HUST@csupervisoronename{}
+\def\csupervisortwoname#1{\def\HUST@csupervisortwoname{#1}}\def\HUST@csupervisortwoname{}
 \def\csupervisortitle#1{\def\HUST@csupervisortitle{#1}}\def\HUST@csupervisortitle{}
 \def\defencedate#1{\def\HUST@defencedate{#1}}\def\HUST@defencedate{}
 \def\grantdate#1{\def\HUST@grantdate{#1}}\def\HUST@grantdate{}
@@ -870,7 +871,8 @@
 \def\eaffil#1{\def\HUST@eaffil{#1}}\def\HUST@eaffil{}
 \def\esubject#1{\def\HUST@esubject{#1}}\def\HUST@esubject{}
 \def\eauthor#1{\def\HUST@eauthor{#1}}\def\HUST@eauthor{}
-\def\esupervisor#1{\def\HUST@esupervisor{#1}}\def\HUST@esupervisor{}
+\def\esupervisorone#1{\def\HUST@esupervisorone{#1}}\def\HUST@esupervisorone{}
+\def\esupervisortwo#1{\def\HUST@esupervisortwo{#1}}\def\HUST@esupervisortwo{}
 \def\eassosupervisor#1{\def\HUST@eassosupervisor{#1}}\def\HUST@eassosupervisor{}
 \def\ecosupervisor#1{\def\HUST@ecosupervisor{~ & #1\\}}\def\HUST@ecosupervisor{}
 \def\edate#1{\def\HUST@edate{#1}}\def\HUST@edate{}
@@ -915,7 +917,15 @@
     \begin{HUST@tabular}{p{5em}ll}
     \HUST@cauthor & \HUST@title@sep & {\HUST@cauthorname} \vspace{0.4em}\\
     \HUST@csubject & \HUST@title@sep & {\HUST@csubjectname} \vspace{0.4em}\\
-    \HUST@csupervisor & \HUST@title@sep & {\HUST@csupervisorname\hspace{1em}\HUST@csupervisortitle} \vspace{0.4em}\\
+    \HUST@csupervisor & \HUST@title@sep & {\HUST@csupervisoronename\hspace{1em}\HUST@csupervisoronetitle} \vspace{0.4em}\\
+    \ifx\HUST@csupervisortwoname\@empty
+      \ifx\HUST@csupervisortwotitle\@empty
+      \else
+        & & {\HUST@csupervisortwoname\hspace{1em}\HUST@csupervisortwotitle} \vspace{0.4em}\\ % 头衔存在时显示
+      \fi
+    \else
+      & & {\HUST@csupervisortwoname\hspace{1em}\HUST@csupervisortwotitle} \vspace{0.4em}\\ % 名字存在时显示
+    \fi
     \HUST@cdefencedate & \HUST@title@sep & {\ziju{3bp}\HUST@defencedate}
     \end{HUST@tabular}
     \end{center}}
@@ -968,7 +978,12 @@
       \begin{HUST@tabular}{lrp{20em}}
         Ph.D. Candidate & : & \HUST@eauthor\\  \vspace{-0.3pt}\\
         Major & : & \HUST@esubject\\ \vspace{-0.3pt}\\
-        Supervisor & : & \HUST@esupervisor
+        Supervisor & : & \HUST@esupervisorone\\ \vspace{-0.3pt}\\
+        \ifx\HUST@esupervisortwo\@empty
+          \fi
+        \else
+         & & \HUST@esupervisortwo
+        \fi
       \end{HUST@tabular}
       }
 	 \vspace*{1.6cm}
