@@ -43,6 +43,7 @@ ENTRY
     journal
     key
     langid
+    language
     month
     note
     number
@@ -66,6 +67,7 @@ ENTRY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block }
+
 
 FUNCTION {not}
 {   { #0 }
@@ -277,11 +279,26 @@ FUNCTION {format.langid}
 if$
 }
 
+STRINGS {entry.langid}
+
+FUNCTION {check.entry.lang}
+{
+  language empty$ not
+    { language 'entry.langid := }
+    'skip$
+  if$
+  langid empty$ not
+    { langid 'entry.langid := }
+    'skip$
+  if$
+}
+
 FUNCTION {bbl.cn.etal}
 { "等." }
 
 FUNCTION {format.names}
-{ 's :=
+{ 
+  's :=
   #1 'nameptr :=
   s num.names$ 'numnames := 
   numnames 'namesleft :=
@@ -313,9 +330,10 @@ FUNCTION {format.names}
               if$
               t "others" =
                 {
-                  langid empty$
+                  "" 'entry.langid := check.entry.lang
+                  entry.langid empty$
                     { ", " * bbl.etal * }
-                    { langid "chinese" =
+                    { entry.langid "chinese" =
                        { ", " * bbl.cn.etal * }
                        'skip$
                       if$
@@ -434,9 +452,10 @@ FUNCTION {format.btitle}
   { title empty$
     { title } 
     { 
-      langid empty$
+      "" 'entry.langid := check.entry.lang
+      entry.langid empty$
         { " " title * ", " * edition * " ed." * }
-        { langid "chinese" =
+        { entry.langid "chinese" =
           { " " title * ",  第" * edition * " 版" * }
           'skip$
           if$
@@ -604,23 +623,33 @@ FUNCTION {format.chapter.pages}
 }
 
 FUNCTION {format.in.ed.booktitle}
-{ booktitle empty$
+{ "" 'entry.langid := check.entry.lang
+  booktitle empty$
     { "" }
     { editor empty$
-    { langid empty$
+    { entry.langid empty$
         { "in: " booktitle * }
-        { "见：" booktitle * }
+        { entry.langid "chinese" =
+          {"见：" booktitle * }
+          'skip$
+          if$
+        }
       if$
     }
-    { langid empty$
+    { entry.langid empty$
         { "in: " format.editors * ", " * booktitle * }
-        { "见：" * format.editors * booktitle * }
+        { entry.langid "chinese" =
+        {"见：" * format.editors * booktitle *}
+        'skip$
+        if$
+       }
       if$
     }
       if$
     }
   if$
 }
+
 
 FUNCTION {empty.misc.check}
 { author empty$ title empty$ howpublished empty$
@@ -1013,11 +1042,21 @@ FUNCTION {manual}
   fin.entry
 }
 
+% FUNCTION {masterthesis.type}
+% { langid empty$
+%     { "[硕士学位论文]" }
+%     { "[Master Thesis]" }
+%   if$
+% }
 FUNCTION {masterthesis.type}
-{ langid empty$
-    { "[硕士学位论文]" }
-    { "[Master Thesis]" }
-  if$
+{ "" 'entry.langid := check.entry.lang
+  entry.langid empty$
+  { "[Master Thesis]"  }
+  { entry.langid "chinese" =
+  { "[硕士学位论文]" }
+  'skip$
+  if$}
+if$
 }
 
 FUNCTION {mastersthesis}
@@ -1050,11 +1089,17 @@ FUNCTION {misc}
   empty.misc.check
 }
 
+
+
 FUNCTION {phdthesis.type}
-{ langid empty$
-    { "[博士学位论文]" }
-    { "[PhD Dissertation]" }
-  if$ 
+{ "" 'entry.langid := check.entry.lang
+  entry.langid empty$
+  { "[PhD Dissertation]"  }
+  { entry.langid "chinese" =
+  { "[博士学位论文]" }
+  'skip$
+  if$}
+if$
 }
 
 FUNCTION {phdthesis}
