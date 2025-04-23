@@ -42,7 +42,7 @@ ENTRY
     institution
     journal
     key
-    lang
+    langid
     month
     note
     number
@@ -270,8 +270,8 @@ INTEGERS { nameptr namesleft numnames }
 FUNCTION {bbl.etal}
 { "et~al." }
 
-FUNCTION {format.lang}
-{ lang empty$
+FUNCTION {format.langid}
+{ langid empty$
   'skip$
   'skip$
 if$
@@ -313,9 +313,9 @@ FUNCTION {format.names}
               if$
               t "others" =
                 {
-                  lang empty$
+                  langid empty$
                     { ", " * bbl.etal * }
-                    { lang "chinese" =
+                    { langid "chinese" =
                        { ", " * bbl.cn.etal * }
                        'skip$
                       if$
@@ -323,9 +323,9 @@ FUNCTION {format.names}
                   if$
                 }
                 {
-                  lang empty$
+                  langid empty$
                     { ", " * t * }
-                    { lang "chinese" =
+                    { langid "chinese" =
                        { ", " * t * }
                        'skip$                   
                      if$
@@ -366,7 +366,7 @@ FUNCTION {format.authors}
 FUNCTION {format.editors}
 { editor empty$
     { "" }
-    { lang empty$
+    { langid empty$
     { editor format.names
       editor num.names$ #1 >
     { ", editors" * }
@@ -434,9 +434,9 @@ FUNCTION {format.btitle}
   { title empty$
     { title } 
     { 
-      lang empty$
+      langid empty$
         { " " title * ", " * edition * " ed." * }
-        { lang "chinese" =
+        { langid "chinese" =
           { " " title * ",  第" * edition * " 版" * }
           'skip$
           if$
@@ -530,9 +530,9 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-    {  lang empty$
+    {  langid empty$
          {": " pages n.dashify tie.or.space.connect }
-         { lang "chinese" = 
+         { langid "chinese" = 
          { ": " pages n.dashify tie.or.space.connect }
          'skip$
          if$
@@ -607,12 +607,12 @@ FUNCTION {format.in.ed.booktitle}
 { booktitle empty$
     { "" }
     { editor empty$
-    { lang empty$
+    { langid empty$
         { "in: " booktitle * }
         { "见：" booktitle * }
       if$
     }
-    { lang empty$
+    { langid empty$
         { "in: " format.editors * ", " * booktitle * }
         { "见：" * format.editors * booktitle * }
       if$
@@ -1014,7 +1014,7 @@ FUNCTION {manual}
 }
 
 FUNCTION {masterthesis.type}
-{ lang empty$
+{ langid empty$
     { "[硕士学位论文]" }
     { "[Master Thesis]" }
   if$
@@ -1051,7 +1051,7 @@ FUNCTION {misc}
 }
 
 FUNCTION {phdthesis.type}
-{ lang empty$
+{ langid empty$
     { "[博士学位论文]" }
     { "[PhD Dissertation]" }
   if$ 
