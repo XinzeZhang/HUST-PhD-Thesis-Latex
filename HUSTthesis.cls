@@ -419,10 +419,10 @@
 % 设置标题样式
 \long\def\@makecaption#1#2{%
   % 图表标题字体比正文小半号，为大五号，11pt
+  % \setstretch{.9} %在图表标题长度超过一行时，调整行间距使之与正文行间距一致
   \dawu
   \rmfamily
   \song
-  %\setstretch{.9} %在图表标题长度超过一行时，调整行间距使之与正文行间距一致
   \vskip\abovecaptionskip
   % 去掉图表号后面的":"
   \setbox\@tempboxa\hbox{#1~~#2}%
