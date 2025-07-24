@@ -1,32 +1,8 @@
 # HUST-PhD-Thesis-Latex
 
-HUSTThesis.cls 2025/04/22 version V3.1.3x
+HUSTThesis.cls 2025/07/24 version V3.1.4x; _ThesisBeamer/beamerthemeBFH.sty 2024/01/31 version V1.1.1x
 
-This is the unofficial LaTeX class for Master/Ph.D. Thesis Template of Huazhong University of Science and Technology.  'x' denotes the branch modified by Xinze Zhang.
-
-Contributors: Xinze Zhang, lxysl(2024 V3.1.3x), Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0).
-
-Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
-
-Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
-
-This code is distributed under the Perl Artistic License
-( http://language.perl.com/misc/Artistic.html )
-and may be freely used, distributed and modified.
-Retain the contribution notices and credits.
-
-Current maintainer:
-lianghao1993@hust.edu.cn
-linjqcn@gmail.com
-xinze@hust.edu.cn
-
----
-
-_ThesisBeamer/beamerthemeBFH.sty 2024/01/31 version V1.1.1x
-
-Contributors: Xinze Zhang (2024 V1.1x)
-
-Copyright (C) 2024 by Xinze Zhang <xinze@hust.edu.cn>
+This is the unofficial LaTeX class for Ph.D. Thesis Template of Huazhong University of Science and Technology.  'x' denotes the branch modified by Xinze Zhang.
 
 ---
 
@@ -60,17 +36,24 @@ blackhead, redhead
 
 ---
 
-注意：遇到问题，如参考文献作者数量，建议先在closed issues中检索，可能已有回答。
+注意：遇到问题，如参考文献作者数量，建议先在closed issues中检索，可能已有回答。本模板仅供参考。不同学院，乃至同一学院的不同年份，对于学位论文的形式要求也可能不同。所以，对于一些学院的特定形式要求，还请自行调整。
+
+另外，本人理解，模板在一定程度上是为了方便大家达到学术（形式）规范要求。对于学校提供的word模板，所有要求不见得必须严格遵守。例如附录章节的设置，不一定每篇学位论文都需要或存在这些章节。因此，在满足规范的前提下，建议大家灵活调整。
 
 ---
+07/2025
+V3.1.4x changes:
+附录参考学校模板进行了修改调整。
 
+---
 04/2025
 
 Thesis V3.1.3x changes:
 
-1. Support two supervisors. The modification can also automatically support the default situation with only one supervisor. Thank [lxysl](https://github.com/lxysl).
+1. 支持双导师. 默认支持单导师，双导师设置见`body/cover.tex`. 感谢[lxysl](https://github.com/lxysl)的PR.
 
-2. Now, the red header or black header can be configured in the main.tex
+2. 红色或黑色抬头可在导言区进行设置，例如`\documentclass[draftformat,blackhead]{HUSTthesis}`
+
 ---
 
 01/2024
@@ -150,3 +133,23 @@ modify class file (HUSTthesis.cls):
  04/2004 V1.0 released (Feng Jiang)
 
  by Feng Jiang (fjiang@people.com.cn)
+
+
+----
+
+HUSTThesis.cls contributors: Xinze Zhang, lxysl(2025 V3.1.3x), Lianghao Li, Jianqing Lin (2021 V3.1), Xinze Zhang (2020 V3.0), Huikan Liu (2006 V2.0), and Feng Jiang (2005 V1.0).
+
+Copyright (C) 2020-2021 by Xinze Zhang <xinze@hust.edu.cn>
+
+Copyright (C) 2006-2007 by Huikan Liu <hkliu@mail.edu.cn>
+
+_ThesisBeamer contributors: Xinze Zhang (2024 V1.1x)
+
+This code is distributed under the Perl Artistic License
+( http://language.perl.com/misc/Artistic.html )
+and may be freely used, distributed and modified.
+Retain the contribution notices and credits.
+
+Current maintainer:
+xinze@hust.edu.cn
+
