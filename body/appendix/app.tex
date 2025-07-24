@@ -1,5 +1,13 @@
-\begin{publications}
 
+\begin{decision}
+一般情况下，答辩委员会决议的内容不宜过少，亦不宜超过一页。不同学院对此页的要求（是否需要包含此页在最终存档模板内，是否需要单独提交，包含在模板内的改页是否需要答辩主席签字等）可能有所不同，具体内容请参照学院的相关规定。 
+
+若不需要此页，请将其从模板中删除。删除方式为注释或去掉本环境。
+\end{decision}
+
+
+
+\begin{publications}
     已发表论文：
     \renewcommand{\labelenumi}{[\arabic{enumi}]}
     \begin{enumerate}
@@ -27,11 +35,7 @@
 
 \end{publications}
 
-
-
-\phantomsection
-\chapter{已发表论文与博士学位论文的关系}
-
+\begin{paperRelation}
     \renewcommand\tabularxcolumn[1]{m{#1}}
     % 已发表论文与博士学位论文的关系：
     \begin{table}[!htbp]
@@ -44,7 +48,7 @@
             2                   & {Short-term Load Forecasting of Central China based on DPSO-LSTM}                                            & \makecell[c]{EI会议                                                             \\（已发表） }    &  \multicolumn{1}{X|}{提出了时步多维度的时序输入特征二维结构，结合粒子群优化算法选择时步维度与模型参数，提升了LSTM模型的短期电力负荷预测效果}        & \multicolumn{1}{X|}{基于对该成果的改进，构成论文第5章主要内容}         \\ \hline
         \end{tabularx}
     \end{table}
-
+\end{paperRelation}
 
 \begin{project}
     \renewcommand{\labelenumi}{\arabic{enumi}.}
@@ -58,6 +62,29 @@
 
 \end{project}
 
+\begin{denotation}
+\item[CNN] Convolutional Neural Network（卷积神经网络）
+\end{denotation}
 
+
+\begin{otherDatas}
+    % 其他数据图表或程序
+    本处放置其他数据图表或程序的相关内容。当仅包含某一类别时，建议将本节名进行修改。例如，本节将仅包含本论文中所使用的数据集图示，因此在本人所提交的学位论文中，基于答辩委员会的意见，本节名称被修改为“本文数据集展示”。 若无其他数据图表或程序，建议将本节删除。删除方式为注释或去掉本环境。
+    
+    以下是本节内容节选：
+
+    \cref{fig:app.ar1}展示了本文中的经典人工合成时间序列数据，包括一阶自回归（AR1）合成数据.....各数据集的简要说明如下：
+
+    \autoref{fig:app.ar1}展示了AR1合成数据，该数据参考相关研究\cite{qi2008trend,crone2016feature}的参数设定，通过\autoref{sec:esm.exp}中的\autoref{eq:ar}予以合成。
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width = 0.9\textwidth]{float/ch.app/ar1.png}
+        \captionsetup{skip=2pt}
+        \setlength{\belowcaptionskip}{-8pt}
+        \caption{AR1合成数据\label{fig:app.ar1}}
+    \end{figure}
+    
+\end{otherDatas}
 % \phantomsection
 % \input{body/chapter/univ.tex}

@@ -1108,33 +1108,7 @@
 
 % 定义“符号对照表”环境，可选
 %改动6
-\newenvironment{denotation}{
-    %\cleardoublepage
-    %\phantomsection
-    \titlecontents{chapter}
-           [0.0em]
-           {\bfseries\hei\addvspace{6bp minus6bp}}
-           {\thecontentslabel\hspace{1em}}
-           {}
-           {\normalfont\dotfill\textrm{\bfseries\contentspage}}
-    \addcontentsline{toc}{chapter}{\sihao \HUST@denotation@name}
-    \chapter*{\HUST@denotation@name}
-    \markboth{\HUST@denotation@name}{\HUST@denotation@name}
-    \xiaosi[1.6]
-    \noindent\begin{list}{}%
-                {\renewcommand\makelabel[1]{##1\hfil}
-                \setlength{\labelwidth}{2.5cm} %标签盒子宽度
-                \setlength{\labelsep}{0.5cm} %标签与列表文本距离
-                \setlength{\itemindent}{0cm} %标签缩进量
-                \setlength{\leftmargin}{\labelwidth+\labelsep} %左边界
-                \setlength{\rightmargin}{0cm}
-                \setlength{\parsep}{0cm} %段落间距
-                \setlength{\itemsep}{0cm} %标签间距
-                \setlength{\listparindent}{0cm} %段落缩进量
-                \setlength{\topsep}{0pt} %标签与上文的间距
-    }
-    \disabledottedtoc}
-    {\end{list}}%%%%%
+
 
 
 % 定义封底的“致谢”
@@ -1176,21 +1150,29 @@
               {\normalfont\dotfill\textrm{\contentspage[(\thecontentspage)]}}
   }{}
 
-% 定义封底的“攻读博士学位期间发表的学术论文目录”
+% 定义封底的“答辩委员会决议”
+\newenvironment{decision}{
+  \phantomsection
+  \chapter{\HUST@decision@title}
+  \markboth{\HUST@decision@title}{\HUST@decision@title}
+  }
+
+
+% 定义封底的“攻读博士学位期间取得的研究成果”
 \newenvironment{publications}{
   %  \clearpage
    \phantomsection
    \chapter{\HUST@publication@title}
+   \markboth{\HUST@publication@title}{\HUST@publication@title}
    }
 
-%% 定义封底的“攻读博士学位期间申请的发明专利和其他成果”(新版本中合并至上一部分)
-%\newenvironment{patent}{
-%   \clearpage
-%   \phantomsection
-%   \chapter{\HUST@patent@title}
-%   \renewcommand{\labelenumi}{[\arabic{enumi}]}
-%   \begin{enumerate}
-%   }{\end{enumerate}}
+% 定义封底的“已发表论文与博士学位论文的关系”
+\newenvironment{paperRelation}{
+   \phantomsection
+   \chapter{\HUST@paperRelation@title}
+   \markboth{\HUST@paperRelation@title}{\HUST@paperRelation@title}
+   % 在此处添加已发表论文与博士学位论文的关系的内容
+   }
 
 % 定义封底的“攻读博士学位期间参与的科研项目”
 \newenvironment{project}{
@@ -1199,22 +1181,44 @@
    \chapter{\HUST@project@title}
    }
 
-  % 定义封底的“攻读博士学位期间参与的科研项目”
-   \newenvironment{paperThesis}{
-  %  \clearpage
+
+\newenvironment{denotation}{
+%\cleardoublepage
+\phantomsection
+% \titlecontents{chapter}
+%         [0.0em]
+%         {\bfseries\hei\addvspace{6bp minus6bp}}
+%         {\thecontentslabel\hspace{1em}}
+%         {}
+%         {\normalfont\dotfill\textrm{\bfseries\contentspage}}
+% \addcontentsline{toc}{chapter}{\sihao \HUST@denotation@name}
+\chapter{\HUST@denotation@name}
+\markboth{\HUST@denotation@name}{\HUST@denotation@name}
+\xiaosi[1.6]
+\noindent\begin{list}{}%
+            {\renewcommand\makelabel[1]{##1\hfil}
+            \setlength{\labelwidth}{2.5cm} %标签盒子宽度
+            \setlength{\labelsep}{0.5cm} %标签与列表文本距离
+            \setlength{\itemindent}{0cm} %标签缩进量
+            \setlength{\leftmargin}{\labelwidth+\labelsep} %左边界
+            \setlength{\rightmargin}{0cm}
+            \setlength{\parsep}{0cm} %段落间距
+            \setlength{\itemsep}{0cm} %标签间距
+            \setlength{\listparindent}{0cm} %段落缩进量
+            \setlength{\topsep}{0pt} %标签与上文的间距
+}
+\disabledottedtoc}
+{\end{list}}%%%%%
+
+% 定义封底的“已发表论文与博士学位论文的关系”
+\newenvironment{otherDatas}{
    \phantomsection
-   \chapter{\HUST@paperThesis@title}
+   \chapter{\HUST@otherDatas@title}
+   \markboth{\HUST@otherDatas@title}{\HUST@otherDatas@title}
+   % 在此处添加已发表论文与博士学位论文的关系的内容
    }
 
-   % 定义封底的“攻读博士学位期间所获奖励”
-\newenvironment{honor}{
-  % \clearpage
-  \phantomsection
-  \chapter{\HUST@honor@title}
-  }
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 定义参考文献样式
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1390,7 +1394,6 @@
 \newcommand{\HUST@frontdate}{日期：\hspace{2em}年\hspace{2em}月\hspace{2em}日}
 
 \newcommand{\HUST@keywords}{关键词：}
-\newcommand{\HUST@denotation@name}{主要符号对照表}
 \newcommand{\HUST@ackshortname}{致谢}
 \newcommand{\HUST@ackname}{致\hspace{1em}谢}
 \newcommand{\HUST@acklongname}{致谢与声明}
@@ -1401,11 +1404,14 @@
 \newcommand{\HUST@signature}{签\hspace{1em}名：}
 \newcommand{\HUST@backdate}{日\hspace{1em}期：}
 
+\newcommand{\HUST@decision@title}{答辩委员会决议}
 \newcommand{\HUST@publication@title}{攻读博士学位期间取得的研究成果}
+\newcommand{\HUST@paperRelation@title}{公开发表的学术成果与博士学位论文的关系}
 \newcommand{\HUST@patent@title}{攻读博士学位期间申请的发明专利和其他成果}
-\newcommand{\HUST@project@title}{攻读博士学位期间参与的科研项目}
-\newcommand{\HUST@honor@title}{攻读博士学位期间所获奖励}
-\newcommand{\HUST@paperThesis@title}{学术成果与博士学位论文的关系}
+\newcommand{\HUST@project@title}{攻读学位期间参加的科研项目}
+% \newcommand{\HUST@honor@title}{攻读博士学位期间所获奖励}
+\newcommand{\HUST@denotation@name}{中英文缩写对照表}
+\newcommand{\HUST@otherDatas@title}{其他数据图表或程序}
 
 \endinput
 
