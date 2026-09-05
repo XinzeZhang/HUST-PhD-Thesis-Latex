@@ -1,6 +1,6 @@
 # HUST-PhD-Thesis-Latex
 
-HUSTThesis.cls 2025/07/24 version V3.1.4x; _ThesisBeamer/beamerthemeBFH.sty 2024/01/31 version V1.1.1x
+Thesis template 2026/09/05 version V3.2.0x; _ThesisBeamer/beamerthemeBFH.sty 2024/01/31 version V1.1.1x
 
 This is the unofficial LaTeX class for Ph.D. Thesis Template of Huazhong University of Science and Technology.  'x' denotes the branch modified by Xinze Zhang.
 
@@ -39,6 +39,21 @@ blackhead, redhead
 注意：遇到问题，如参考文献作者数量，建议先在closed issues中检索，可能已有回答。本模板仅供参考。不同学院，乃至同一学院的不同年份，对于学位论文的形式要求也可能不同。所以，对于一些学院的特定形式要求，还请自行调整。
 
 另外，本人理解，模板在一定程度上是为了方便大家达到学术（形式）规范要求。对于学校提供的word模板，所有要求不见得必须严格遵守。例如附录章节的设置，不一定每篇学位论文都需要或存在这些章节。因此，在满足规范的前提下，建议大家灵活调整。
+
+---
+09/2026
+
+Thesis V3.2.0x changes:
+
+1. 参考文献样式更新为 GB/T 7714—2025 顺序编码制，新增 `gbt7714-2025.bst`，并在 `main.tex` 中启用该样式。
+
+2. 新增 `ref/GB-T7714-2025-reference-examples.bib` 作为中文、英文期刊、图书、会议、网站和报告等条目的录入示例；新增 `standards/GB-T-7714-2025.pdf` 供格式核对。
+
+3. 新样式兼容原模板的 `language` 与 `langid` 字段，以及 `chinese`、`zh`、`zh-cn`、`cn`、`english`、`en`、`en-us`、`en-gb` 等语言值；缺省语言字段时可根据作者和题名自动识别。`pinyin` 仅作为需要保留拼音姓名完整名时的可选值。
+
+4. 新增项目内 `gbt7714-2025-references` skill，用于后续参考文献录入、样式维护和编译核验。
+
+特别感谢李亚东同学编写并提供 `gbt7714-2025.bst` 和参考文献格式示例文件，为本次 GB/T 7714—2025 参考文献格式更新提供了重要支持。
 
 ---
 07/2025
@@ -152,4 +167,3 @@ Retain the contribution notices and credits.
 
 Current maintainer:
 xinze@hust.edu.cn
-

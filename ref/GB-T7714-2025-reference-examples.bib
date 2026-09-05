@@ -1,0 +1,161 @@
+
+%author中文输入语法如下：
+%author={张三 and 李四 and 王五 and ...},
+
+%author英文输入语法如下：
+%author={A姓, A名 and B姓, B名 and C姓, C名 and ...},
+
+
+%% language 或 langid 可用于明确语言和作者姓名显示方式；两者均缺省时，BST 会根据作者和题名自动判断文字类型。
+
+% 中文文献兼容 language={chinese/zh/zh-cn/cn}，也兼容原模板的 langid={chinese/zh/zh-cn/cn}
+
+% language={pinyin}仅用于需要保留拼音姓名完整名的情况，不替代 zh 或 cn
+
+% 英文文献兼容 language={english/en/en-us/en-gb}，作者姓显示完整、名缩写为首字母
+
+
+
+%中文期刊示例
+@article{郭雷2022,
+	title={无人系统生存智能与安全、免疫、绿色控制技术},
+	author={郭雷 and 朱玉凯 and 乔建忠 and 郭康 and 包为民},
+	journal={航空学报},
+	volume={43},
+	number={10},
+	pages={366--376},
+	year={2022},
+	language={chinese}
+}
+
+
+%作者全为中国人的英文期刊示例
+@article{wang2025nash,
+	title={Nash--minmax strategies for multiagent pursuit--evasion games with reinforcement learning},
+	author={Wang, Yuhan and Zhang, Hao and Wang, Zhuping and Yan, Huaicheng},
+	journal={IEEE Transactions on Cybernetics},
+	volume={55},
+	number={7},
+	pages={3320--3331},
+	year={2025},
+	language={pinyin},
+	publisher={IEEE}
+}
+
+
+
+%作者全为外国人的英文期刊示例
+@article{kumar2022true,
+	title={True-proportional-navigation inspired finite-time homing guidance for time constrained interception},
+	author={Kumar, Shashi Ranjan and Mukherjee, Dwaipayan},
+	journal={Aerospace Science and Technology},
+	volume={123},
+	pages={107499},
+	year={2022},
+	language={english},
+	publisher={Elsevier}
+}
+
+
+%作者包含中国人和外国人的英文期刊示例1(手动缩写外国人的名)
+@article{yan2024cooperative,
+	title={Cooperative control for heterogeneous multi-agent systems: progress, applications, and challenges},
+	author={Yan, Bing and Shi, Peng and Chambers, J},
+	journal={Science China Information Sciences},
+	volume={67},
+	number={5},
+	pages={156201},
+	year={2024},
+	language={pinyin},
+	publisher={Springer}
+}
+
+
+
+%作者包含中国人和外国人的英文期刊示例2(手动缩写外国人的名)
+@article{usmani2025resilient,
+	title={Resilient consensus control for heterogeneous multi-agent systems subject to two-channel stochastic deception attacks},
+	author={Usmani, G A and Rehan, M and Wu, Xiaotai and ur Rehman, A},
+	journal={IEEE Transactions on Consumer Electronics},
+	volume={72},
+	number={1},
+	pages={2049--2060},
+	year={2025},
+	language={pinyin},
+	publisher={IEEE}
+}
+
+
+%没有页码的英文期刊示例
+@article{jiang2026seeking,
+	title={Seeking Nash equilibrium in non-cooperative quadratic games under delayed information exchange},
+	author={Jiang, Kaichen and Yan, Yuyue and Yue, Mingda and Wu, Yuhu},
+	journal={IEEE Transactions on Automatic Control},
+	year={2026},
+	publisher={IEEE},
+	language={pinyin},
+	url={https://ieeexplore.ieee.org/document/11503403},
+	doi={10.1109/TAC.2026.3689807}
+}
+
+
+%英文图书示例
+@book{spong2004robot,
+	title={Robot dynamics and control},
+	author={Spong, Mark W and Hutchinson, Seth and Vidyasagar, M},
+	year={2004},
+	address={Hoboken, NJ, USA},
+	language={english},
+	publisher={John Wiley \& Sons, Inc.}
+}
+
+
+%英文会议示例
+@inproceedings{duan2022review,
+	title={A review for unmanned swarm gaming: framework, model and algorithm},
+	author={Duan, Ting and Wang, Weiping and Wang, Tao},
+	booktitle={2022 8th International Conference on Big Data and Information Analytics (BigDIA)},
+	pages={164--170},
+	year={2022},
+	language={pinyin},
+	url={https://ieeexplore.ieee.org/document/9874133},
+	doi={10.1109/BigDIA56350.2022.9874133}
+}
+
+
+%中文网站示例
+@website{1055,
+	author={中华人民共和国国务院},
+	title={中华人民共和国国民经济和社会发展第十五个五年规划纲要},
+	urldate={2026-03-13},
+	language={chinese},
+	url={https://www.gov.cn/yaowen/liebiao/202603/content_7062633.htm}
+}
+
+
+%英文网站示例
+@website{THAAD,
+	author={McIntyre, Cindy},
+	title={Fort Sill trains THAAD batteries},
+	urldate={2017-10-26},
+	language={english},
+	url={https://www.army.mil/article/195977/fort_sill_trains_thaad_batteries}
+}
+
+
+%英文报告示例
+@techreport{otto2016small,
+	title={Small unmanned aircraft systems (SUAS) flight plan: 2016-2036. Bridging the gap between tactical and strategic},
+	author={Otto, Robert P},
+	institution={Defense Technical Information Center},
+	number={AD1013675},
+	year={2016},
+	date={2016-4-30},
+	urldate={2017-07-03},
+	language={english},
+	url={https://apps.dtic.mil/sti/tr/pdf/AD1013675.pdf}
+}
+
+
+%%其余类型条目请自行参照《信息与文献-参考文献著录规则》（GB/T 7714-2025）进行修改
+
